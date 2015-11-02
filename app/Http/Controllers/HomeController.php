@@ -15,6 +15,9 @@ class HomeController extends Controller
 
         $this->data['uri'] = 'hola';
 
+        $data = file_get_html('http://peru.com');
+        echo $data;
+
         return view('home.home',$this->data);
 
     }
