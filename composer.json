@@ -21,7 +21,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/Http/Libraries/simple_html_dom.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [
