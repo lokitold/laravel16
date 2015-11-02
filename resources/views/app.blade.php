@@ -40,7 +40,6 @@
                         <a href="#">{{ Auth::user()->name }}</a>
                     </li>
                     <li><a href="{{route('auth/logout')}}">Logout</a></li>
-
                 @endif
             </ul>
         </div>
