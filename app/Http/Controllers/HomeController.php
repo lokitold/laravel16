@@ -13,9 +13,8 @@ class HomeController extends Controller
 {
     public function getIndex(){
 
-
         $this->data['uri'] = 'hola';
-        
+
         return view('home.home',$this->data);
 
     }
