@@ -12,6 +12,11 @@ namespace App\Http\Controllers;
 class HomeController extends Controller
 {
     public function getIndex(){
-        echo "aca";
+
+
+        $this->data['uri'] = 'hola';
+        
+        return view('home.home',$this->data);
+
     }
 }
