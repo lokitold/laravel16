@@ -390,15 +390,12 @@
 <script src="/sbadmin2/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Morris Charts JavaScript -->
-<script src="/sbadmin2/bower_components/raphael/raphael-min.js"></script>
+<!--script src="/sbadmin2/bower_components/raphael/raphael-min.js"></script>
 <script src="/sbadmin2/bower_components/morrisjs/morris.min.js"></script>
-<script src="/sbadmin2/js/morris-data.js"></script>
+<script src="/sbadmin2/js/morris-data.js"></script-->
 
 <!-- Custom Theme JavaScript -->
 <script src="/sbadmin2/dist/js/sb-admin-2.js"></script>
-
-<!-- GOogle APi JavaScript -->
-<script src="http://maps.googleapis.com/maps/api/js"></script>
 
 </body>
 
