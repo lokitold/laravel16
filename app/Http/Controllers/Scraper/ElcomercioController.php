@@ -16,19 +16,30 @@ class ElcomercioController extends Controller
 {
     const LIST_ITEM = 'section[id=ec-ultimas] article header h2 a';
 
-    public function getIndex(){
+    private $limit = 5;
 
-        $noticia = Noticia::all();
-        dd($noticia);exit;
+    public function getIndex(){
 
 
         $data = file_get_html('http://elcomercio.pe');
         $sectionUltimasNoticias = $data->find(self::LIST_ITEM);
+        $count = 0;
 
 
         foreach($sectionUltimasNoticias as $link ):
+
             $url = $link->getAttribute('href');
             echo '<br>';echo $id = $this->_getid($url);
+
+            $noticia = Noticia::find($id);
+
+            if(empty($noticia)):
+                $count ++;
+            endif;
+
+            if ($count >= $this->limit):
+                break;
+            endif;
 
         endforeach;
 
