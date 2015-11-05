@@ -25,7 +25,7 @@
             map: map
         });
 
-        var latLng = new google.maps.LatLng(51.508742,-0.13);
+        var latLng = new google.maps.LatLng(51.508742,-0.20856);
         var marker = new google.maps.Marker({
             position: latLng,
             map: map
