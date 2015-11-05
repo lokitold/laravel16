@@ -15,7 +15,7 @@ class ElcomercioController extends Controller
 {
     public function getIndex(){
 
-        $data = file_get_html('http://publimetro.pe');
+        $data = file_get_html('http://elcomercio.pe');
 
         echo $data;
 
