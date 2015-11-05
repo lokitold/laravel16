@@ -24,8 +24,7 @@ class ElcomercioController extends Controller
         foreach($sectionUltimasNoticias as $link ):
             $url = $link->getAttribute('href');
             echo '<br>';echo $id = $this->_getid($url);
-
-
+        
         endforeach;
 
     }
@@ -47,8 +46,6 @@ class ElcomercioController extends Controller
                 endif;
             endif;
         endif;
-
-
 
         return $id;
     }
