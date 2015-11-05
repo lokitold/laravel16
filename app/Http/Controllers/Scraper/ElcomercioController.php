@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Scraper;
 
 use App\Http\Controllers\Controller;
+use App\Noticia;
 
 
 class ElcomercioController extends Controller
@@ -17,6 +18,10 @@ class ElcomercioController extends Controller
 
     public function getIndex(){
 
+        $noticia = Noticia::all();
+        dd($noticia);exit;
+
+
         $data = file_get_html('http://elcomercio.pe');
         $sectionUltimasNoticias = $data->find(self::LIST_ITEM);
 
@@ -24,7 +29,7 @@ class ElcomercioController extends Controller
         foreach($sectionUltimasNoticias as $link ):
             $url = $link->getAttribute('href');
             echo '<br>';echo $id = $this->_getid($url);
-        
+
         endforeach;
 
     }
