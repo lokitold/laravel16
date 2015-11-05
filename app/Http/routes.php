@@ -12,7 +12,10 @@
 */
 
 // Home routes ..
-Route::controller('/', 'HomeController');
+Route::get('/', 'HomeController@getIndex');
+
+// scraper
+Route::get('publimetro', 'Scraper\PublimetroController@getIndex');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
