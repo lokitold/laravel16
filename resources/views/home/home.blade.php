@@ -10,6 +10,7 @@
 <!-- GOogle APi JavaScript -->
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
+
     function initialize() {
         var mapProp = {
             center:new google.maps.LatLng(51.508742,-0.120850),
@@ -23,9 +24,13 @@
             position: latLng,
             map: map
         });
+
+        var latLng = new google.maps.LatLng(51.508742,-0.13);
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+        });
     }
-
-
 
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
