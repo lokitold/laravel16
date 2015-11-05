@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Scraper;
 use App\Http\Controllers\Controller;
 
 
-class PublimetroController extends Controller
+class ElcomercioController extends Controller
 {
     public function getIndex(){
 

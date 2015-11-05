@@ -15,7 +15,7 @@
 Route::get('/', 'HomeController@getIndex');
 
 // scraper
-Route::get('publimetro', 'Scraper\PublimetroController@getIndex');
+Route::get('elcomercio', 'Scraper\ElcomercioController@getIndex');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
