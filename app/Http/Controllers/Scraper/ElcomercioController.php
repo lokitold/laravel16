@@ -21,6 +21,9 @@ class ElcomercioController extends Controller
     public function getIndex(){
 
 
+        //test
+        //
+
         $data = file_get_html('http://elcomercio.pe');
         $sectionUltimasNoticias = $data->find(self::LIST_ITEM);
         $count = 0;
@@ -40,11 +43,28 @@ class ElcomercioController extends Controller
                 $this->news[$id]['source_id'] = $id;
                 $this->news[$id]['url'] = $url;
 
-                $description = $link->find('p');
+                $description = $link->find('p',0);
                 $this->news[$id]['description'] = NULL;
-                if(!empty($description[0])):
-                    $this->news[$id]['description'] = $description[0]->plaintext;
+                if(!empty($description)):
+                    $this->news[$id]['description'] = $description->plaintext;
                 endif;
+
+                $titulo = $link->find('header h2',0);
+                $this->news[$id]['titulo'] = NULL;
+                if(!empty($titulo)):
+                    $this->news[$id]['titulo'] = $titulo->plaintext;
+                endif;
+
+                $imagen = $link->find('figure a img');
+                $this->news[$id]['imagen'] = json_encode(array());
+                if(!empty($imagen)):
+                    foreach($imagen as $img):
+                       $ima[] = $img->getAttribute('data-src');
+                    endforeach;
+                    $this->news[$id]['imagen'] = json_encode($ima);
+                    unset($ima);
+                endif;
+
 
                 $count ++;
             endif;
