@@ -40,6 +40,7 @@ class ElcomercioController extends Controller
             $noticia = Noticia::find($id);
 
             if(empty($noticia)):
+
                 $this->news[$id]['source_id'] = $id;
                 $this->news[$id]['url'] = $url;
 
@@ -65,6 +66,26 @@ class ElcomercioController extends Controller
                     unset($ima);
                 endif;
 
+                $dateraw = $link->find('header ul li[class=f-fecha]',0)->plaintext;
+                if(!empty($dateraw)):
+                    $dateraw = str_replace("hace", "",strtolower($dateraw));
+                    if (strpos($dateraw, 'segundo') or strpos($dateraw, 'segundos')) :
+                        $dateraw = str_replace(array('segundos','segundo'), "",strtolower($dateraw));
+                        $dateMenosSegundos = (int)trim($dateraw);
+                    elseif(strpos($dateraw, 'minuto') or strpos($dateraw, 'minutos')):
+                        $dateraw = str_replace(array('minutos','minuto'), "",strtolower($dateraw));
+                        $dateMenosSegundos = (int)trim($dateraw) * 60;
+                    elseif(strpos($dateraw, 'hora') or strpos($dateraw, 'horas')):
+                        $dateraw = str_replace(array('horas','hora'), "",strtolower($dateraw));
+                        $dateMenosSegundos = (int)trim($dateraw) * 60 * 60;
+                    else:
+                        $dateMenosSegundos = 0;
+                    endif;
+                else:
+                    $dateMenosSegundos = 0;
+                endif;
+
+               // Zend_Date::now()->toString('Y-m-d H:i:s');
 
                 $count ++;
             endif;
