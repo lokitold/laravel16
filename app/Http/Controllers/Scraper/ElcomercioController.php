@@ -17,6 +17,8 @@ class ElcomercioController extends Controller
 
     private $limit = 5;
 
+    private  $news = array();
+
     public function getIndex(){
 
 
@@ -36,9 +38,9 @@ class ElcomercioController extends Controller
             $id = $this->_getid($url);
             echo '<br>';echo $id;
 
-            $noticia = Noticia::find($id);
+            $noticia = Noticia:: where('source_id', '=', $id)->get();
 
-            if(empty($noticia)):
+            if(count($noticia) <= 0 and !empty($id)):
 
                 $this->news[$id]['source_id'] = $id;
                 $this->news[$id]['url'] = $url;
@@ -88,8 +90,15 @@ class ElcomercioController extends Controller
                 $endDate = $date->subSecond($dateMenosSegundos);
                 $this->news[$id]['fecha_publicacion'] = $endDate->format('Y-m-d H:i:s');
 
+                $this->insertMysql($this->news[$id]);
+
+                echo " Agregado <br>";
+
                 $count ++;
+            else:
+                echo ' No agregado <br>';
             endif;
+
 
             if ($count >= $this->limit):
                 break;
@@ -120,5 +129,19 @@ class ElcomercioController extends Controller
         endif;
 
         return $id;
+    }
+
+    private function insertMysql($news){
+
+        $noticia = new Noticia;
+        $noticia->source_id = $news['source_id'];
+        $noticia->descripcion = $news['description'];
+        $noticia->url = $news['url'];
+        $noticia->titulo = $news['titulo'];
+        $noticia->imagen = $news['imagen'];
+        $noticia->fecha_publicacion = $news['fecha_publicacion'];
+        $noticia->status = 0;
+
+        $noticia->save();
     }
 }
