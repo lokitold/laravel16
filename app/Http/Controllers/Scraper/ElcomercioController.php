@@ -87,7 +87,7 @@ class ElcomercioController extends Controller
                 $date = $carbon::now();
                 $endDate = $date->subSecond($dateMenosSegundos);
                 $this->news[$id]['fecha_publicacion'] = $endDate->format('Y-m-d H:i:s');
-                
+
                 $count ++;
             endif;
 
