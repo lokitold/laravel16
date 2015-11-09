@@ -21,7 +21,7 @@ class ElcomercioController extends Controller
     public function getIndex(){
 
 
-        $data = file_get_html('http://elcomercio.pe');
+        $data = file_get_html('http://elcomercio.pe');$data = file_get_html('http://elcomercio.pe');
         $sectionUltimasNoticias = $data->find(self::LIST_ITEM);
         $count = 0;
 
@@ -33,7 +33,17 @@ class ElcomercioController extends Controller
 
             $noticia = Noticia::find($id);
 
+            //$test = file_get_html('http://elcomercio.pe/peru/ucayali/historica-creacion-parque-sierra-divisor-fotos-noticia-1854620?flsm=1&ref=portada_home');
+            //echo $test;exit;
+            
             if(empty($noticia)):
+
+                echo '<br>'.$url;
+
+                $interna = file_get_html($url);
+
+                echo $interna;
+
                 $count ++;
             endif;
 
