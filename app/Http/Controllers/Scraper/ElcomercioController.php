@@ -11,7 +11,6 @@ namespace App\Http\Controllers\Scraper;
 use App\Http\Controllers\Controller;
 use App\Noticia;
 
-
 class ElcomercioController extends Controller
 {
     const LIST_ITEM = 'section[id=ec-ultimas] article[class=ec-flujo]';
@@ -84,9 +83,11 @@ class ElcomercioController extends Controller
                 else:
                     $dateMenosSegundos = 0;
                 endif;
-
-               // Zend_Date::now()->toString('Y-m-d H:i:s');
-
+                $carbon = new \Carbon\Carbon();
+                $date = $carbon::now();
+                $endDate = $date->subSecond($dateMenosSegundos);
+                $this->news[$id]['fecha_publicacion'] = $endDate->format('Y-m-d H:i:s');
+                
                 $count ++;
             endif;
 
