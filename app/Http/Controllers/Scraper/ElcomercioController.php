@@ -14,7 +14,7 @@ use App\Noticia;
 
 class ElcomercioController extends Controller
 {
-    const LIST_ITEM = 'section[id=ec-ultimas] article header h2 a';
+    const LIST_ITEM = 'section[id=ec-ultimas] article[class=ec-flujo]';
 
     private $limit = 5;
 
@@ -28,12 +28,24 @@ class ElcomercioController extends Controller
 
         foreach($sectionUltimasNoticias as $link ):
 
-            $url = $link->getAttribute('href');
-            echo '<br>';echo $id = $this->_getid($url);
+            $url = $link->find('header h2 a');
+            $url = $url[0]->getAttribute('href');
+
+            $id = $this->_getid($url);
+            echo '<br>';echo $id;
 
             $noticia = Noticia::find($id);
 
             if(empty($noticia)):
+                $this->news[$id]['source_id'] = $id;
+                $this->news[$id]['url'] = $url;
+
+                $description = $link->find('p');
+                $this->news[$id]['description'] = NULL;
+                if(!empty($description[0])):
+                    $this->news[$id]['description'] = $description[0]->plaintext;
+                endif;
+
                 $count ++;
             endif;
 
@@ -42,6 +54,8 @@ class ElcomercioController extends Controller
             endif;
 
         endforeach;
+
+        dd($this->news);
 
     }
 
