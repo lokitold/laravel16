@@ -15,7 +15,7 @@ class HomeController extends Controller
 
         $this->data['uri'] = 'hola';
 
-        return view('home.home',$this->data);
+        return view('dashboard.default',$this->data);
 
     }
 }
