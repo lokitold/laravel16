@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Noticia;
+
 
 class DashboardController extends Controller
 {
@@ -21,7 +23,12 @@ class DashboardController extends Controller
 
     public function getListNoticia(){
 
+        $noticias = Noticia::paginate();
+        $noticias->setPath('/dashboard/noticia');
+
+
         $this->data['uri'] = 'hola';
+        $this->data['noticias'] = $noticias;
 
         return view('dashboard.noticia_list',$this->data);
 
