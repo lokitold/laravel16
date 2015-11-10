@@ -16,7 +16,8 @@ Route::get('/', 'HomeController@getIndex');
 
 // Dashboard
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', 'DashboardController@getIndex');
+    Route::get('/dashboard', ['as' =>'dashboard', 'uses' => 'DashboardController@getIndex']);
+    Route::get('/dashboard/noticia', ['as' =>'dashboard/noticia', 'uses' => 'DashboardController@getListNoticia']);
 });
 
 // Scraper
