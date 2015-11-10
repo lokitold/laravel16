@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Noticia;
+use App\Http\Requests\PostFormNoticia;
 
 
 class DashboardCrudNoticiaController extends Controller
@@ -21,9 +22,23 @@ class DashboardCrudNoticiaController extends Controller
         $this->data['uri'] = 'hola';
         $this->data['noticias'] = $noticias;
 
-        return view('dashboard.noticia_list',$this->data);
+        return view('dashboard.noticia.index',$this->data);
 
+    }
 
+    public function store(PostFormNoticia $postForm)
+    {
+        $post = new \App\Post;
+        $post->title = \Request::input('title');
+        $post->body = \Request::input('body');
+        $post->save();
+
+        return redirect('dashboard/noticia/create')->with('message', 'Post saved');
+    }
+
+    public function create()
+    {
+        return view("dashboard.noticia.create");
     }
 
 }
