@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
         $this->data['uri'] = 'hola';
 
-        return view('home.home',$this->data);
+        return view('dashboard.home',$this->data);
 
     }
 }
