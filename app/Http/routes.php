@@ -14,7 +14,12 @@
 // Home routes ..
 Route::get('/', 'HomeController@getIndex');
 
-// scraper
+// Dashboard
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', 'DashboardController@getIndex');
+});
+
+// Scraper
 Route::get('elcomercio', 'Scraper\ElcomercioController@getIndex');
 
 // Authentication routes...
