@@ -15,12 +15,10 @@ use App\Http\Requests\PostFormNoticia;
 class DashboardCrudNoticiaController extends Controller
 {
     public function index(){
-        
-        //$noticias = Noticia::paginate(30)->orderBy('id', 'desc');
+
+        //$noticias = Noticia::paginate(30);
         $noticias = \DB::table('noticia')->orderBy('id', 'desc')->paginate(30);
 
-
-        //$users = Noticia::where('votes', '>', 100)->paginate(15);
         $noticias->setPath('/dashboard/noticia');
 
         $this->data['uri'] = 'hola';

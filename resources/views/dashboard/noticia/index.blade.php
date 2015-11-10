@@ -13,12 +13,16 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>Título</th>
+                        <th>Fecha Publicacion</th>
+                        <th>Estado</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                     @foreach ($noticias as $noticia)
                         <tr>
                             <td width="500">{{ $noticia->titulo }}</td>
+                            <td width="300">{{ $noticia->fecha_publicacion }}</td>
+                            <td width="80">{{ $noticia->status }}</td>
                             <td width="60" align="center">
                                 {!! Html::link(route('dashboard.noticia.edit', $noticia->id), 'Edit', array('class' => 'btn btn-success btn-md')) !!}
                             </td>
