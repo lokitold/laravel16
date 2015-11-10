@@ -10,18 +10,18 @@ namespace App\Http\Controllers;
 
 use App\Noticia;
 use App\Http\Requests\PostFormNoticia;
+use Illuminate\Http\Request;
 
 
 class DashboardCrudNoticiaController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        //$noticias = Noticia::paginate(30);
-        $noticias = \DB::table('noticia')->orderBy('id', 'desc')->paginate(30);
+        $noticias = Noticia::status($request->status)->orderBy('id', 'desc')->paginate(30);
 
         $noticias->setPath('/dashboard/noticia');
 
-        $this->data['uri'] = 'hola';
+        $this->data['status'] = $request->status;
         $this->data['noticias'] = $noticias;
 
         return view('dashboard.noticia.index',$this->data);

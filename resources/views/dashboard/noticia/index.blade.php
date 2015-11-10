@@ -7,6 +7,24 @@
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
+        {!! Form::open([ 'route' => 'dashboard.noticia.index','method' => 'GET','class' => 'navbar-form ']) !!}
+        <div class="panel-body col-lg-3 col-md-offset-1">
+            <div class="form-group">
+                {!! Form::label('estado', 'Estado') !!}
+                {!! Form::select('status', ['' => '', 0 => 'Sin Editar', 1 => 'Editado', 2 => 'Rechazado'], $status, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="panel-body col-lg-6">
+        </div>
+        <div class="panel-body col-lg-2">
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </div>
+        </div>
+        {!! Form::close() !!}
+    </div>
+
+    <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
             @if(!$noticias->isEmpty())

@@ -28,4 +28,11 @@ class Noticia extends Model
      * @var array
      */
     //protected $hidden = ['password', 'remember_token'];
+
+    public function scopeStatus($query,$status){
+
+        if(trim($status) != ''):
+            $query->where('status', $status);
+        endif;
+    }
 }
