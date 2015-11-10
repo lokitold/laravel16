@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
     public function getListNoticia(){
 
-        $noticias = Noticia::paginate();
+        $noticias = Noticia::paginate(30);
         $noticias->setPath('/dashboard/noticia');
 
 
