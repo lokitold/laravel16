@@ -21,19 +21,6 @@ class DashboardController extends Controller
 
     }
 
-    public function getListNoticia(){
-
-        $noticias = Noticia::paginate(30);
-        $noticias->setPath('/dashboard/noticia');
-
-
-        $this->data['uri'] = 'hola';
-        $this->data['noticias'] = $noticias;
-
-        return view('dashboard.noticia_list',$this->data);
-
-    }
-
     public function getPreview(){
 
         $this->data['uri'] = 'hola';

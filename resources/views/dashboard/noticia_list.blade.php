@@ -20,10 +20,10 @@
                         <tr>
                             <td width="500">{{ $noticia->titulo }}</td>
                             <td width="60" align="center">
-                                {!! Html::link(route('/dashboard/noticia/edit', $noticia->id), 'Edit', array('class' => 'btn btn-success btn-md')) !!}
+                                {!! Html::link(route('dashboard.noticia.edit', $noticia->id), 'Edit', array('class' => 'btn btn-success btn-md')) !!}
                             </td>
                             <td width="60" align="center">
-                                {!! Form::open(array('route' => array('dashboard/noticia/destroy', $noticia->id), 'method' => 'DELETE')) !!}
+                                {!! Form::open(array('route' => array('dashboard.noticia.destroy', $noticia->id), 'method' => 'DELETE')) !!}
                                 <button type="submit" class="btn btn-danger btn-md">Delete</button>
                                 {!! Form::close() !!}
                             </td>

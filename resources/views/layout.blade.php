@@ -78,7 +78,7 @@
                         <a href="{{route('dashboard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{route('dashboard/noticia')}}"><i class="fa fa-table fa-fw"></i> Noticias</a>
+                        <a href="{{route('dashboard.noticia.index')}}"><i class="fa fa-table fa-fw"></i> Noticias</a>
                     </li>
                 </ul>
             </div>

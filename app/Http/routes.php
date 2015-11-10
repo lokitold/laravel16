@@ -17,9 +17,12 @@ Route::get('/', 'HomeController@getIndex');
 // Dashboard
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', ['as' =>'dashboard', 'uses' => 'DashboardController@getIndex']);
-    Route::get('/dashboard/noticia', ['as' =>'dashboard/noticia', 'uses' => 'DashboardController@getListNoticia']);
+
+    Route::resource('dashboard/noticia', 'DashboardCrudNoticiaController');
+
+    /*Route::get('/dashboard/noticia', ['as' =>'dashboard/noticia', 'uses' => 'DashboardController@getListNoticia']);
     Route::get('/dashboard/noticia/edit', ['as' =>'/dashboard/noticia/edit', 'uses' => 'DashboardController@getListNoticia']);
-    Route::get('/dashboard/noticia/destroy', ['as' =>'dashboard/noticia/destroy', 'uses' => 'DashboardController@getListNoticia']);
+    Route::get('/dashboard/noticia/destroy', ['as' =>'dashboard/noticia/destroy', 'uses' => 'DashboardController@getListNoticia']);*/
     Route::get('/dashboard/preview', ['as' =>'dashboard/preview', 'uses' => 'DashboardController@getPreview']);
 });
 
