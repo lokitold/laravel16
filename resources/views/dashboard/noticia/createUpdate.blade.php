@@ -49,6 +49,22 @@
                         {!! Form::select('status', ['' => '', 0 => 'Sin Editar', 1 => 'Editado', 2 => 'Rechazado'], null, ['class' => 'form-control']) !!}
                     </div>
 
+                    <div class="form-group">
+                        {!! Form::label('longitud', 'Longitud') !!}
+                        {!! Form::Number('longitud', null, ["class" => "form-control" , 'type' => "number",'step'=>"any" ,'id' => 'input-longitud']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('latitud', 'Latitud') !!}
+                        {!! Form::Number('latitud', null, ["class" => "form-control" , 'type' => "number",'step'=>"any",'id' => 'input-latitud']) !!}
+                    </div>
+
+
+                    <div class="panel-body ">
+                        <input id="pac-input" class="form-control" type="text" placeholder="Buscar...">
+                        <div id="map" style="height: 620px"></div>
+                    </div>
+
                     <div class="form-group pull-right">
                         <p class="text-left"><a href="{!! $noticia->url !!}}" target="_blank">Acceder a Noticia</a></p>
                     </div>
@@ -64,5 +80,53 @@
             </div>
         </div>
     </div>
+    <script>
+
+        function initAutocomplete() {
+            var latLng = {
+                        lat: <?php echo $noticia->latitud ? $noticia->latitud : '-12.0461738' ?>,
+                        lng: <?php echo $noticia->longitud ? $noticia->longitud : '-77.0299262' ?>
+              },
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: latLng,
+                        zoom: 12,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    }),
+                    marker = new google.maps.Marker({
+                        position: latLng,
+                        draggable: true,
+                        map: map,
+                        title: 'Arrastrar para ubicar posición'
+                    }),
+                    setData = function (){
+                        document.getElementById('input-longitud').value = marker.position.lng();
+                        document.getElementById('input-latitud').value = marker.position.lat();
+                    },
+                    input = document.getElementById('pac-input'),
+                    searchBox = new google.maps.places.SearchBox(input);
+
+            map.addListener('click', function(e) {
+                marker.setPosition(e.latLng);
+                setData();
+            });
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            marker.addListener('dragend', function(){
+                setData();
+            });
+
+            searchBox.addListener('places_changed', function() {
+                var places = searchBox.getPlaces();
+                if (places.length == 0) {
+                    return;
+                }
+                //del array, cogemos solo el primero
+                marker.setPosition(places[0].geometry.location);
+                marker.setTitle(places[0].name);
+                map.panTo(places[0].geometry.location);
+                setData();
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2g6-YR2236S6r66mOjlNYE-eoiVvETvw&signed_in=true&libraries=places&callback=initAutocomplete"></script>
 @endsection
 
