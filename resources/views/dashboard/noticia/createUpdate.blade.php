@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Home</div>
+                <div class="panel-heading"><a href="{!! $noticia->url !!}}">Acceder a Noticia</a></div>
 
                 @if($errors->has())
                     <div class='alert alert-danger'>
@@ -24,20 +24,20 @@
                 @endif
 
                 <div class="panel-body">
-                    {!! Form::open(['route' => 'dashboard.noticia.store']) !!}
+                    {!! Form::model($noticia,['route' => 'dashboard.noticia.update','method' => 'PUT']) !!}
 
                     <div class="form-group">
-                        {!! Form::text('title', null, ["class" => "form-control"]) !!}
+                        {!! Form::text('titulo', null, ["class" => "form-control" , 'disabled' => 'disabled']) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::textarea('body', null,
-                                ['class'=>'form-control', 'placeholder'=>'Body'])
+                        {!! Form::textarea('descripcion', null,
+                                ['class'=>'form-control', 'placeholder'=>'Body', 'disabled' => 'disabled'])
                         !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::submit('Send', ["class" => "btn btn-success btn-block"]) !!}
+                        {!! Form::submit('Send', ["class" => "btn btn-success "]) !!}
                     </div>
 
                     {!! Form::close() !!}

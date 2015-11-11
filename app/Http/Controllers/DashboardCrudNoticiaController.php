@@ -38,9 +38,19 @@ class DashboardCrudNoticiaController extends Controller
         return redirect('dashboard/noticia/create')->with('message', 'Post saved');
     }
 
-    public function create()
+    /*public function create()
     {
         return view("dashboard.noticia.create");
+    }*/
+
+
+    public function edit($id)
+    {
+
+        $this->data['noticia'] = \App\Noticia::find($id);
+        //dd($this->data['noticia']);
+
+        return view('dashboard.noticia.createUpdate',$this->data);
     }
 
 }
