@@ -17,7 +17,7 @@
 
         var mapOptions = {
             center: new google.maps.LatLng(-12.0461738, -77.0299262),
-            zoom: 12,
+            zoom: 2,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var map = new google.maps.Map(mapCanvas, mapOptions)
