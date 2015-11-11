@@ -24,7 +24,7 @@
                 @endif
 
                 <div class="panel-body">
-                    {!! Form::model($noticia,['route' => 'dashboard.noticia.update','method' => 'PUT']) !!}
+                    {!! Form::model($noticia,['route' => ['dashboard.noticia.update', $noticia->id],'method' => 'PUT']) !!}
 
                     <div class="form-group">
                         {!! Form::text('titulo', null, ["class" => "form-control" , 'disabled' => 'disabled']) !!}

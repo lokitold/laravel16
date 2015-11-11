@@ -28,7 +28,7 @@ class DashboardCrudNoticiaController extends Controller
 
     }
 
-    public function store(PostFormNoticia $postForm)
+    private function store(PostFormNoticia $postForm)
     {
         $post = new \App\Post;
         $post->title = \Request::input('title');
@@ -38,17 +38,35 @@ class DashboardCrudNoticiaController extends Controller
         return redirect('dashboard/noticia/create')->with('message', 'Post saved');
     }
 
-    /*public function create()
+    public function update($id, PostFormNoticia $postForm)
+    {
+
+        //$input = \Request::all();
+        //dd($input);
+
+        $noticia = \App\Noticia::find($id);
+
+        $noticia->longitud = \Request::input('longitud');
+
+        $noticia->latitud = \Request::input('latitud');
+
+        $noticia->status = \Request::input('status');
+
+        $noticia->save();
+
+        return redirect()->route('dashboard.noticia.edit', ['noticia' => $id])->with('message', 'Post updated');
+    }
+
+    private function create()
     {
         return view("dashboard.noticia.create");
-    }*/
+    }
 
 
     public function edit($id)
     {
 
         $this->data['noticia'] = \App\Noticia::find($id);
-        //dd($this->data['noticia']);
 
         return view('dashboard.noticia.createUpdate',$this->data);
     }
