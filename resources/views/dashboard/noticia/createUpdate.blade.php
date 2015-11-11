@@ -37,8 +37,27 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::text('fecha_publicacion', null, ["class" => "form-control" , 'disabled' => 'disabled']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::text('url', null, ["class" => "form-control" , 'disabled' => 'disabled']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('estado', 'Estado') !!}
+                        {!! Form::select('status', ['' => '', 0 => 'Sin Editar', 1 => 'Editado', 2 => 'Rechazado'], null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group pull-right">
+                        <p class="text-left"><a href="{!! $noticia->url !!}}" target="_blank">Acceder a Noticia</a></p>
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::submit('Send', ["class" => "btn btn-success "]) !!}
                     </div>
+
+
 
                     {!! Form::close() !!}
                 </div>
