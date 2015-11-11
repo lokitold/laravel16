@@ -20,9 +20,21 @@ class HomeController extends Controller
         foreach($noticias as $noticia):
             if(!empty($noticia->longitud) and !empty($noticia->latitud)):
 
+                $imagenes = json_decode($noticia->imagen);
+                $imagenContent = '';
+
+                foreach($imagenes as $imagen ):
+                    $imagenContent .= "<img src='$imagen'>";
+                endforeach;
+
+
                 $content = "<div>
                                 <div>
                                     <h4><a href='$noticia->url' target='_blank'>$noticia->titulo</a></h4>
+                                    <h5>$noticia->fecha_publicacion</h5>
+                                </div>
+                                <div>
+                                    $imagenContent;
                                 </div>
                                 <div >
                                     $noticia->descripcion
