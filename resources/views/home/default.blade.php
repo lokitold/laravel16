@@ -9,15 +9,68 @@
 <script src="/sbadmin2/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>
+
+    var misPuntos = <?php echo $marcadoresJson ?>;
+
     function initialize() {
         var mapCanvas = document.getElementById('map');
+
         var mapOptions = {
-            center: new google.maps.LatLng(44.5403, -78.5463),
-            zoom: 8,
+            center: new google.maps.LatLng(-12.0461738, -77.0299262),
+            zoom: 12,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var map = new google.maps.Map(mapCanvas, mapOptions)
+
+        setGoogleMarkers(map, misPuntos);
+
+        /*
+        var myCenter=new google.maps.LatLng(-12.0461738, -77.0299262);
+
+        var marker=new google.maps.Marker({
+            position:myCenter,
+        });
+
+        marker.setMap(map);
+
+        var infowindow = new google.maps.InfoWindow({
+            content:"<a href='http://peruquiosco.pe' target='_blank'>Hello World!</a>"
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        */
+
     }
+
+    var markers = Array();
+    var infowindowActivo = false;
+    function setGoogleMarkers(map, locations) {
+
+        var marker;
+        var infowindow = new google.maps.InfoWindow();
+
+        for (i in locations){
+
+            var marcador = locations[i];
+            var myLatLng = new google.maps.LatLng(marcador.latitud, marcador.longitud);
+
+            marker = new google.maps.Marker({
+                position:myLatLng,
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infowindow.setContent(marcador.content);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+
+        }
+    }
+
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <div class="container">

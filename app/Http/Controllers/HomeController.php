@@ -13,7 +13,21 @@ class HomeController extends Controller
 {
     public function getIndex(){
 
-        $this->data['uri'] = 'hola';
+        $noticias = \App\Noticia::where('status',1)->get();
+
+        $marcadores = array();
+
+        foreach($noticias as $noticia):
+            if(!empty($noticia->longitud) and !empty($noticia->latitud)):
+                $marcadores[]= array(
+                    'latitud' => $noticia->latitud,
+                    'longitud' => $noticia->longitud,
+                    'content' => '<div>html</div>'
+                );
+            endif;
+        endforeach;
+
+        $this->data['marcadoresJson'] = json_encode($marcadores);
 
         return view('home.default',$this->data);
 
