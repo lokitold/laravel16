@@ -24,24 +24,6 @@
 
         setGoogleMarkers(map, misPuntos);
 
-        /*
-        var myCenter=new google.maps.LatLng(-12.0461738, -77.0299262);
-
-        var marker=new google.maps.Marker({
-            position:myCenter,
-        });
-
-        marker.setMap(map);
-
-        var infowindow = new google.maps.InfoWindow({
-            content:"<a href='http://peruquiosco.pe' target='_blank'>Hello World!</a>"
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map,marker);
-        });
-        */
-
     }
 
     var markers = Array();
@@ -63,7 +45,7 @@
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
-                    infowindow.setContent(marcador.content);
+                    infowindow.setContent(locations[i].content);
                     infowindow.open(map, marker);
                 }
             })(marker, i));
