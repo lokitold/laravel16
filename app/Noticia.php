@@ -20,7 +20,7 @@ class Noticia extends Model
      *
      * @var array
      */
-    //protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['source_id', 'descripcion', 'url', 'titulo', 'imagen', 'fecha_publicacion', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -28,4 +28,11 @@ class Noticia extends Model
      * @var array
      */
     //protected $hidden = ['password', 'remember_token'];
+
+    public function scopeStatus($query,$status){
+
+        if(trim($status) != ''):
+            $query->where('status', $status);
+        endif;
+    }
 }

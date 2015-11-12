@@ -11,28 +11,90 @@ namespace App\Http\Controllers\Scraper;
 use App\Http\Controllers\Controller;
 use App\Noticia;
 
-
 class ElcomercioController extends Controller
 {
-    const LIST_ITEM = 'section[id=ec-ultimas] article header h2 a';
+    const LIST_ITEM = 'section[id=ec-ultimas] article[class=ec-flujo]';
 
     private $limit = 5;
+
+    private  $news = array();
 
     public function getIndex(){
 
 
-        $data = file_get_html('http://elcomercio.pe');$data = file_get_html('http://elcomercio.pe');
+        //test
+        //
+
+        $data = file_get_html('http://elcomercio.pe');
         $sectionUltimasNoticias = $data->find(self::LIST_ITEM);
         $count = 0;
 
 
         foreach($sectionUltimasNoticias as $link ):
 
-            $url = $link->getAttribute('href');
-            echo '<br>';echo $id = $this->_getid($url);
+            $url = $link->find('header h2 a');
+            $url = $url[0]->getAttribute('href');
 
-            $noticia = Noticia::find($id);
+            $id = $this->_getid($url);
+            echo '<br>';echo $id;
 
+            $noticia = Noticia:: where('source_id', '=', $id)->get();
+
+            if(count($noticia) <= 0 and !empty($id)):
+
+                $this->news[$id]['source_id'] = $id;
+                $this->news[$id]['url'] = $url;
+
+                $description = $link->find('p',0);
+                $this->news[$id]['description'] = NULL;
+                if(!empty($description)):
+                    $this->news[$id]['description'] = $description->plaintext;
+                endif;
+
+                $titulo = $link->find('header h2',0);
+                $this->news[$id]['titulo'] = NULL;
+                if(!empty($titulo)):
+                    $this->news[$id]['titulo'] = $titulo->plaintext;
+                endif;
+
+                $imagen = $link->find('figure a img');
+                $this->news[$id]['imagen'] = json_encode(array());
+                if(!empty($imagen)):
+                    foreach($imagen as $img):
+                       $ima[] = $img->getAttribute('data-src');
+                    endforeach;
+                    $this->news[$id]['imagen'] = json_encode($ima);
+                    unset($ima);
+                endif;
+
+                $dateraw = $link->find('header ul li[class=f-fecha]',0)->plaintext;
+                if(!empty($dateraw)):
+                    $dateraw = str_replace("hace", "",strtolower($dateraw));
+                    if (strpos($dateraw, 'segundo') or strpos($dateraw, 'segundos')) :
+                        $dateraw = str_replace(array('segundos','segundo'), "",strtolower($dateraw));
+                        $dateMenosSegundos = (int)trim($dateraw);
+                    elseif(strpos($dateraw, 'minuto') or strpos($dateraw, 'minutos')):
+                        $dateraw = str_replace(array('minutos','minuto'), "",strtolower($dateraw));
+                        $dateMenosSegundos = (int)trim($dateraw) * 60;
+                    elseif(strpos($dateraw, 'hora') or strpos($dateraw, 'horas')):
+                        $dateraw = str_replace(array('horas','hora'), "",strtolower($dateraw));
+                        $dateMenosSegundos = (int)trim($dateraw) * 60 * 60;
+                    else:
+                        $dateMenosSegundos = 0;
+                    endif;
+                else:
+                    $dateMenosSegundos = 0;
+                endif;
+                $carbon = new \Carbon\Carbon();
+                $date = $carbon::now();
+                $endDate = $date->subSecond($dateMenosSegundos);
+                $this->news[$id]['fecha_publicacion'] = $endDate->format('Y-m-d H:i:s');
+
+                $this->insertMysql($this->news[$id]);
+
+                echo " Agregado <br>";
+
+<<<<<<< HEAD
             //$test = file_get_html('http://elcomercio.pe/peru/ucayali/historica-creacion-parque-sierra-divisor-fotos-noticia-1854620?flsm=1&ref=portada_home');
             //echo $test;exit;
             
@@ -44,14 +106,21 @@ class ElcomercioController extends Controller
 
                 echo $interna;
 
+=======
+>>>>>>> a1737e9fb53fa9c232a2cc3545742af20e22e5f4
                 $count ++;
+            else:
+                echo ' No agregado <br>';
             endif;
+
 
             if ($count >= $this->limit):
                 break;
             endif;
 
         endforeach;
+
+        dd($this->news);
 
     }
 
@@ -74,5 +143,19 @@ class ElcomercioController extends Controller
         endif;
 
         return $id;
+    }
+
+    private function insertMysql($news){
+
+        $noticia = new Noticia;
+        $noticia->source_id = $news['source_id'];
+        $noticia->descripcion = $news['description'];
+        $noticia->url = $news['url'];
+        $noticia->titulo = $news['titulo'];
+        $noticia->imagen = $news['imagen'];
+        $noticia->fecha_publicacion = $news['fecha_publicacion'];
+        $noticia->status = 0;
+
+        $noticia->save();
     }
 }
