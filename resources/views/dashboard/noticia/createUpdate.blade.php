@@ -9,7 +9,9 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="{!! $noticia->url !!}}">Acceder a Noticia</a></div>
+                <div class="panel-heading">
+                    <p class="text-right"><a href="{!! $noticia->url !!}}">Acceder a Noticia</a></p>
+                </div>
 
                 @if($errors->has())
                     <div class='alert alert-danger'>
@@ -25,6 +27,10 @@
 
                 <div class="panel-body">
                     {!! Form::model($noticia,['route' => ['dashboard.noticia.update', $noticia->id],'method' => 'PUT']) !!}
+
+                    <div class="form-group">
+                        {!! Form::submit('Send', ["class" => "btn btn-success "]) !!}
+                    </div>
 
                     <div class="form-group">
                         {!! Form::text('titulo', null, ["class" => "form-control" , 'disabled' => 'disabled']) !!}
@@ -45,11 +51,6 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('estado', 'Estado') !!}
-                        {!! Form::select('status', ['' => '', 0 => 'Sin Editar', 1 => 'Editado', 2 => 'Rechazado'], null, ['class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
                         {!! Form::label('longitud', 'Longitud') !!}
                         {!! Form::Number('longitud', null, ["class" => "form-control" , 'type' => "number",'step'=>"any" ,'id' => 'input-longitud']) !!}
                     </div>
@@ -67,6 +68,11 @@
 
                     <div class="form-group pull-right">
                         <p class="text-left"><a href="{!! $noticia->url !!}}" target="_blank">Acceder a Noticia</a></p>
+                    </div>
+
+                     <div class="form-group">
+                        {!! Form::label('estado', 'Estado') !!}
+                        {!! Form::select('status', ['' => '', 0 => 'Sin Editar', 1 => 'Editado', 2 => 'Rechazado'], null, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
