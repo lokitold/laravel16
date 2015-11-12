@@ -2,7 +2,7 @@
 @section('content')
 <style>
     #map {
-        width: 1150px;
+        width: 950px;
         height: 700px;
     }
 </style>
@@ -63,7 +63,10 @@
     </div>
     <div class="row"></div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-2">
+            <div>Menu</div>
+        </div>
+        <div class="col-md-10">
             <div id="map"></div>
         </div>
     </div>
