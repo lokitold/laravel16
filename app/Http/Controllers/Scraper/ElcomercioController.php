@@ -94,20 +94,6 @@ class ElcomercioController extends Controller
 
                 echo " Agregado <br>";
 
-<<<<<<< HEAD
-            //$test = file_get_html('http://elcomercio.pe/peru/ucayali/historica-creacion-parque-sierra-divisor-fotos-noticia-1854620?flsm=1&ref=portada_home');
-            //echo $test;exit;
-            
-            if(empty($noticia)):
-
-                echo '<br>'.$url;
-
-                $interna = file_get_html($url);
-
-                echo $interna;
-
-=======
->>>>>>> a1737e9fb53fa9c232a2cc3545742af20e22e5f4
                 $count ++;
             else:
                 echo ' No agregado <br>';
