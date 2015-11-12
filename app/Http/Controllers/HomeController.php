@@ -8,10 +8,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GetFormHome;
 
 class HomeController extends Controller
 {
-    public function getIndex(){
+    public function getIndex(GetFormHome $getForm){
+
+        //users = DB::table('users')
+        //            ->whereBetween('votes', [1, 100])->get();
+
 
         $noticias = \App\Noticia::where('status',1)->get();
 
