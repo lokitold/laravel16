@@ -54,6 +54,10 @@ class DashboardCrudNoticiaController extends Controller
 
         $noticia->save();
 
+        if(\Request::input('location')== 'home'):
+            return redirect()->route('dashboard.noticia.index', null)->with('message', 'Post updated');    
+        endif;
+
         return redirect()->route('dashboard.noticia.edit', ['noticia' => $id])->with('message', 'Post updated');
     }
 

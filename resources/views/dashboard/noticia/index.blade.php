@@ -34,7 +34,7 @@
                         <th>Fecha Publicacion</th>
                         <th>Estado</th>
                         <th>Editar</th>
-                        <!--th>Eliminar</th-->
+                        <th>Eliminar</th>
                     </tr>
                     @foreach ($noticias as $noticia)
                         <tr>
@@ -44,11 +44,13 @@
                             <td width="60" align="center">
                                 {!! Html::link(route('dashboard.noticia.edit', $noticia->id), 'Edit', array('class' => 'btn btn-success btn-md')) !!}
                             </td>
-                            <!--td width="60" align="center">
-                                {!! Form::open(array('route' => array('dashboard.noticia.destroy', $noticia->id), 'method' => 'DELETE')) !!}
-                                <button type="submit" class="btn btn-danger btn-md">Delete</button>
+                            <td width="60" align="center">
+                                {!! Form::open(array('route' => array('dashboard.noticia.update', $noticia->id), 'method' => 'PUT')) !!}
+                                <button type="submit" class="btn btn-danger btn-md">Rechazar</button>
+                                <input type="hidden" name="status" value="2">
+                                <input type="hidden" name="location" value="home">
                                 {!! Form::close() !!}
-                            </td-->
+                            </td>
                         </tr>
                     @endforeach
                 </table>
