@@ -13,7 +13,7 @@ use App\Http\Requests\GetFormHome;
 class HomeController extends Controller
 {
     public function getIndex(GetFormHome $getForm){
-        
+
         $dateDesde = \Request::input('dateDesde');
         $dateHasta = \Request::input('dateHasta');
 
