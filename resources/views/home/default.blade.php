@@ -64,6 +64,7 @@
     <div class="row"></div>
     <div class="row">
         <div class="col-md-2">
+            {!! Form::open(['route' => 'home','method' => 'GET']) !!}
             <div class="form-group">
                 {!! Form::label('desde', 'Fecha Desde') !!}
                 {!! Form::text('dateDesde', $dateDesde, ["class" => "form-control" ]) !!}
@@ -72,6 +73,10 @@
                 {!! Form::label('hasta', 'Fecha Hasta') !!}
                 {!! Form::text('dateHasta', $dateHasta, ["class" => "form-control" ]) !!}
             </div>
+            <div class="form-group">
+                {!! Form::submit('Send', ["class" => "btn btn-success "]) !!}
+            </div>
+            {!! Form::close() !!}
         </div>
         <div class="col-md-10">
             <div id="map"></div>

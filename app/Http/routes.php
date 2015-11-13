@@ -12,7 +12,7 @@
 */
 
 // Home routes ..
-Route::get('/', 'HomeController@getIndex');
+Route::get('/', ['as' =>'home', 'uses' => 'HomeController@getIndex']);
 
 // Dashboard
 Route::group(['middleware' => 'auth'], function () {
