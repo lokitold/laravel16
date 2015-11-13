@@ -13,11 +13,22 @@ use App\Http\Requests\GetFormHome;
 class HomeController extends Controller
 {
     public function getIndex(GetFormHome $getForm){
-
-       
-
+        
         $dateDesde = \Request::input('dateDesde');
         $dateHasta = \Request::input('dateHasta');
+
+        $carbon = new \Carbon\Carbon();
+
+        if(empty($dateDesde)):
+            $desdeDate = $carbon::now();
+            $desdeDate = $desdeDate->subDay(1);
+            $dateDesde = $desdeDate->format('Y-m-d H:i:s');
+        endif;
+
+        if(empty($dateHasta)):
+            $date = $carbon::now();
+            $dateHasta = $date->format('Y-m-d H:i:s');
+        endif;
 
         $noticias = \App\Noticia::dateBetween($dateDesde,$dateHasta)->where('status',1)->get();
 

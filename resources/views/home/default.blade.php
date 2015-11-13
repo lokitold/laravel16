@@ -63,7 +63,8 @@
             format: 'YYYY-MM-DD HH:mm:ss'
         });
         $('#dateHasta').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss'
+            format: 'YYYY-MM-DD HH:mm:ss',
+            defaultDate: new Date()
         });
     });
 </script>
