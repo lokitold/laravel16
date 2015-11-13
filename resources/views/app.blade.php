@@ -60,5 +60,6 @@
 @yield('content')
         <!-- Scripts -->
 {!! Html::script('assets/js/bootstrap.js') !!}
+<script type="text/javascript" src="/laravel16/js/bootstrap-datetimepicker.min.js"></script>
 </body>
 </html>
