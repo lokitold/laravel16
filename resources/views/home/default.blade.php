@@ -57,6 +57,19 @@
 </script>
 <div class="container">
     <div class="row">
+        @if($errors->has())
+            <div class='alert alert-danger'>
+                @foreach ($errors->all('<p>:message</p>') as $message)
+                    {!! $message !!}
+                @endforeach
+            </div>
+        @endif
+
+        @if (Session::has('message'))
+            <div class="alert alert-success">{{ Session::get('message') }}</div>
+        @endif
+    </div>
+    <div class="row">
         <div class="col-md-5 col-md-offset-4">
             <h2>Mapa de noticias</h2>
         </div>

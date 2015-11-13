@@ -23,21 +23,16 @@ class GetFormHome extends Request {
     public function rules()
     {
         return [
-            //"title"    =>    "required|min:5|max:45",
-            //"body"		 =>		 "required|min:5|max:500"
+            "dateDesde"    =>    "date_format:Y-m-d H:i:s",
+            "dateHasta"		 =>		 "date_format:Y-m-d H:i:s"
         ];
     }
 
     public function messages()
     {
-        /*return [
-            'title.required' => 'El campo title es requerido!',
-            'title.min' => 'El campo title no puede tener menos de 5 carácteres',
-            'title.min' => 'El campo title no puede tener más de 45 carácteres',
-            'body.required' => 'El campo body es requerido!',
-            'body.min' => 'El campo body no puede tener menos de 5 carácteres',
-            'body.min' => 'El campo body no puede tener más de 500 carácteres',
-        ];*/
-        return [];
+        return [
+            'dateDesde.date_format' => 'El campo Fecha Desde esta mal formada : Formato Y-m-d H:i:s!',
+            'dateHasta.date_format' => 'El campo Fecha Hasta esta mal formada : Formato Y-m-d H:i:s! ',
+        ];
     }
 }
