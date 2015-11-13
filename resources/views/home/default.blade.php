@@ -11,7 +11,7 @@
 <script>
     var misPuntos = <?php echo $marcadoresJson ?>;
 </script>
-<script src="/laravel16/home.js"></script>
+<script src="/laravel16/js/home.js"></script>
 <div class="container">
     <div class="row">
         @if($errors->has())
