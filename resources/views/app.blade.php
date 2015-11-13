@@ -59,6 +59,6 @@
 </div>
 @yield('content')
         <!-- Scripts -->
-{!! Html::script('assets/js/bootstrap.min.js') !!}
+{!! Html::script('assets/js/bootstrap.js') !!}
 </body>
 </html>
