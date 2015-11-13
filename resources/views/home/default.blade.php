@@ -64,7 +64,14 @@
     <div class="row"></div>
     <div class="row">
         <div class="col-md-2">
-            <div>Menu</div>
+            <div class="form-group">
+                {!! Form::label('desde', 'Fecha Desde') !!}
+                {!! Form::text('dateDesde', $dateDesde, ["class" => "form-control" ]) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('hasta', 'Fecha Hasta') !!}
+                {!! Form::text('dateHasta', $dateHasta, ["class" => "form-control" ]) !!}
+            </div>
         </div>
         <div class="col-md-10">
             <div id="map"></div>

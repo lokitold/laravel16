@@ -14,11 +14,13 @@ class HomeController extends Controller
 {
     public function getIndex(GetFormHome $getForm){
 
-        //users = DB::table('users')
-        //            ->whereBetween('votes', [1, 100])->get();
+       
 
+        $dateDesde = \Request::input('dateDesde');
+        $dateHasta = \Request::input('dateHasta');
 
-        $noticias = \App\Noticia::where('status',1)->get();
+        $noticias = \App\Noticia::dateBetween($dateDesde,$dateHasta)->where('status',1)->get();
+
 
         $marcadores = array();
 
@@ -55,6 +57,8 @@ class HomeController extends Controller
         endforeach;
 
         $this->data['marcadoresJson'] = json_encode($marcadores);
+        $this->data['dateDesde'] = $dateDesde;
+        $this->data['dateHasta'] = $dateHasta;
 
         return view('home.default',$this->data);
 

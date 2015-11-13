@@ -35,4 +35,24 @@ class Noticia extends Model
             $query->where('status', $status);
         endif;
     }
+
+    public function scopeDateBetween($query,$desde,$hasta){
+
+        $carbon = new \Carbon\Carbon();
+
+        if(empty($desde)):
+            $desdeDate = $carbon::now();
+            $desdeDate = $desdeDate->subDay(1);
+            $desde = $desdeDate->format('Y-m-d H:i:s');    
+        endif;
+        
+        if(empty($hasta)):
+            $date = $carbon::now();
+            $hasta = $date->format('Y-m-d H:i:s');    
+        endif;
+
+        $query->whereBetween('fecha_publicacion', [$desde, $hasta])->get();
+    }
+
+     
 }
