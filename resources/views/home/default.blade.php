@@ -59,8 +59,12 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#dateDesde').datetimepicker();
-        $('#dateHasta').datetimepicker();
+        $('#dateDesde').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss'
+        });
+        $('#dateHasta').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss'
+        });
     });
 </script>
 @endsection
