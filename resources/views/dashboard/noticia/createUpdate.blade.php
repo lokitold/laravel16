@@ -107,6 +107,7 @@
                     setData = function (){
                         document.getElementById('input-longitud').value = marker.position.lng();
                         document.getElementById('input-latitud').value = marker.position.lat();
+                        $('select[name=\'status\'] > option[value="1"]').attr('selected', 'selected')
                     },
                     input = document.getElementById('pac-input'),
                     searchBox = new google.maps.places.SearchBox(input);
