@@ -51,12 +51,12 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('longitud', 'Longitud') !!}
+                        {!! Form::label('longitudlabel', 'Longitud') !!}
                         {!! Form::Number('longitud', null, ["class" => "form-control" , 'type' => "number",'step'=>"any" ,'id' => 'input-longitud']) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('latitud', 'Latitud') !!}
+                        {!! Form::label('latitudlabel', 'Latitud') !!}
                         {!! Form::Number('latitud', null, ["class" => "form-control" , 'type' => "number",'step'=>"any",'id' => 'input-latitud']) !!}
                     </div>
 
@@ -133,6 +133,7 @@
             });
         }
     </script>
+    <script src="/sbadmin2/bower_components/jquery/dist/jquery.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2g6-YR2236S6r66mOjlNYE-eoiVvETvw&signed_in=true&libraries=places&callback=initAutocomplete"></script>
 @endsection
 
