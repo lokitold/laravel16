@@ -18,7 +18,7 @@ class DashboardCrudNoticiaController extends Controller
     public function index(Request $request){
 
         $noticias = Noticia::status($request->status)->orderBy('id', 'desc')->paginate(30);
-
+        $noticias->appends(['status' => $request->status]);
         $noticias->setPath('/dashboard/noticia');
 
         $this->data['status'] = $request->status;
