@@ -78,15 +78,16 @@ class HomeController extends Controller
 
     public function test(){
         session_start();
+    
         $csrf = new \Maer\Security\Csrf\Csrf();
-        echo $token = $csrf->getToken(); 
-
+        $token = $csrf->getToken();
 
         if ($csrf->validateToken($token)) {
-            $csrf->regenerateToken();
             echo "Yay! It's a valid token!";
         } else {
             echo "Nope. That token isn't valid!";
         }
+        $csrf->regenerateToken();
+
     }
 }
