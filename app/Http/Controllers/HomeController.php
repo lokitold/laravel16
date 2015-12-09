@@ -74,4 +74,8 @@ class HomeController extends Controller
         return view('home.default',$this->data);
 
     }
+
+    public function test(){
+        
+    }
 }
