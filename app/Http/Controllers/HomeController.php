@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GetFormHome;
+use UWDOEM\CSRF\CSRF;
 
 class HomeController extends Controller
 {
@@ -72,6 +73,21 @@ class HomeController extends Controller
         $this->data['dateHasta'] = $dateHasta;
 
         return view('home.default',$this->data);
+
+    }
+
+    public function test(){
+        session_start();
+    
+        $csrf = new \Maer\Security\Csrf\Csrf();
+        $token = $csrf->getToken();
+
+        if ($csrf->validateToken($token)) {
+            echo "Yay! It's a valid token!";
+        } else {
+            echo "Nope. That token isn't valid!";
+        }
+        $csrf->regenerateToken();
 
     }
 }
