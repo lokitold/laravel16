@@ -10,7 +10,8 @@
         "laravelcollective/html": "5.1.*",
         "nesbot/carbon": "~1.14",
         "uwdoem/csrf": ">=0.1",
-        "maer/csrf": "0.*"
+        "maer/csrf": "0.*",
+        "lokitold/helper": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
