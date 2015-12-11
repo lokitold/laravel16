@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GetFormHome;
 use UWDOEM\CSRF\CSRF;
+use Lokitold\Helper\Utils;
 
 class HomeController extends Controller
 {
@@ -77,17 +78,7 @@ class HomeController extends Controller
     }
 
     public function test(){
-        session_start();
-    
-        $csrf = new \Maer\Security\Csrf\Csrf();
-        $token = $csrf->getToken();
-
-        if ($csrf->validateToken($token)) {
-            echo "Yay! It's a valid token!";
-        } else {
-            echo "Nope. That token isn't valid!";
-        }
-        $csrf->regenerateToken();
-
+        $var = new Utils();
+        echo $var->test();
     }
 }
