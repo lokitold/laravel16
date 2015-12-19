@@ -80,5 +80,6 @@ class HomeController extends Controller
     public function test(){
         $var = new Utils();
         echo $var->test();
+        //test git reset soft
     }
 }
