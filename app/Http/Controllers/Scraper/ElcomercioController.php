@@ -17,9 +17,10 @@ class ElcomercioController extends Controller
 
     private $limit = 5;
 
-    private  $news = array();
+    private $news = array();
 
-    public function getIndex(){
+    public function getIndex()
+    {
 
 
         //test
@@ -30,54 +31,55 @@ class ElcomercioController extends Controller
         $count = 0;
 
 
-        foreach($sectionUltimasNoticias as $link ):
+        foreach ($sectionUltimasNoticias as $link):
 
             $url = $link->find('header h2 a');
             $url = $url[0]->getAttribute('href');
 
             $id = $this->_getid($url);
-            echo '<br>';echo $id;
+            echo '<br>';
+            echo $id;
 
             $noticia = Noticia:: where('source_id', '=', $id)->get();
 
-            if(count($noticia) <= 0 and !empty($id)):
+            if (count($noticia) <= 0 and !empty($id)):
 
                 $this->news[$id]['source_id'] = $id;
                 $this->news[$id]['url'] = $url;
 
-                $description = $link->find('p',0);
+                $description = $link->find('p', 0);
                 $this->news[$id]['description'] = NULL;
-                if(!empty($description)):
+                if (!empty($description)):
                     $this->news[$id]['description'] = $description->plaintext;
                 endif;
 
-                $titulo = $link->find('header h2',0);
+                $titulo = $link->find('header h2', 0);
                 $this->news[$id]['titulo'] = NULL;
-                if(!empty($titulo)):
+                if (!empty($titulo)):
                     $this->news[$id]['titulo'] = $titulo->plaintext;
                 endif;
 
                 $imagen = $link->find('figure a img');
                 $this->news[$id]['imagen'] = json_encode(array());
-                if(!empty($imagen)):
-                    foreach($imagen as $img):
-                       $ima[] = $img->getAttribute('data-src');
+                if (!empty($imagen)):
+                    foreach ($imagen as $img):
+                        $ima[] = $img->getAttribute('data-src');
                     endforeach;
                     $this->news[$id]['imagen'] = json_encode($ima);
                     unset($ima);
                 endif;
 
-                $dateraw = $link->find('header ul li[class=f-fecha]',0)->plaintext;
-                if(!empty($dateraw)):
-                    $dateraw = str_replace("hace", "",strtolower($dateraw));
+                $dateraw = $link->find('header ul li[class=f-fecha]', 0)->plaintext;
+                if (!empty($dateraw)):
+                    $dateraw = str_replace("hace", "", strtolower($dateraw));
                     if (strpos($dateraw, 'segundo') or strpos($dateraw, 'segundos')) :
-                        $dateraw = str_replace(array('segundos','segundo'), "",strtolower($dateraw));
+                        $dateraw = str_replace(array('segundos', 'segundo'), "", strtolower($dateraw));
                         $dateMenosSegundos = (int)trim($dateraw);
-                    elseif(strpos($dateraw, 'minuto') or strpos($dateraw, 'minutos')):
-                        $dateraw = str_replace(array('minutos','minuto'), "",strtolower($dateraw));
+                    elseif (strpos($dateraw, 'minuto') or strpos($dateraw, 'minutos')):
+                        $dateraw = str_replace(array('minutos', 'minuto'), "", strtolower($dateraw));
                         $dateMenosSegundos = (int)trim($dateraw) * 60;
-                    elseif(strpos($dateraw, 'hora') or strpos($dateraw, 'horas')):
-                        $dateraw = str_replace(array('horas','hora'), "",strtolower($dateraw));
+                    elseif (strpos($dateraw, 'hora') or strpos($dateraw, 'horas')):
+                        $dateraw = str_replace(array('horas', 'hora'), "", strtolower($dateraw));
                         $dateMenosSegundos = (int)trim($dateraw) * 60 * 60;
                     else:
                         $dateMenosSegundos = 0;
@@ -94,7 +96,7 @@ class ElcomercioController extends Controller
 
                 echo " Agregado <br>";
 
-                $count ++;
+                $count++;
             else:
                 echo ' No agregado <br>';
             endif;
@@ -110,19 +112,20 @@ class ElcomercioController extends Controller
 
     }
 
-    private function _getid($url){
+    private function _getid($url)
+    {
 
         $id = null;
 
         $path = parse_url($url, PHP_URL_PATH);
 
-        if(!empty($path)):
-            $pathExplode = explode('/',$path);
+        if (!empty($path)):
+            $pathExplode = explode('/', $path);
             $ultimoPath = array_pop($pathExplode);
-            if(!empty($ultimoPath)):
-                $partes = explode('-',$ultimoPath);
+            if (!empty($ultimoPath)):
+                $partes = explode('-', $ultimoPath);
                 $idRaw = array_pop($partes);
-                if(is_numeric($idRaw)):
+                if (is_numeric($idRaw)):
                     $id = $idRaw;
                 endif;
             endif;
@@ -131,7 +134,8 @@ class ElcomercioController extends Controller
         return $id;
     }
 
-    private function insertMysql($news){
+    private function insertMysql($news)
+    {
 
         $noticia = new Noticia;
         $noticia->source_id = $news['source_id'];
