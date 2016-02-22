@@ -14,6 +14,7 @@
 // Home routes ..
 Route::get('/', ['as' =>'home', 'uses' => 'HomeController@getIndex']);
 Route::get('/test', ['as' =>'test', 'uses' => 'HomeController@test']);
+Route::get('/testapi', ['as' =>'testapi', 'uses' => 'TestController@test']);
 
 // Dashboard
 Route::group(['middleware' => 'auth'], function () {
