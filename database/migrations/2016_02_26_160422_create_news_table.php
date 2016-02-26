@@ -11,13 +11,13 @@ class CreateNewsTable extends Migration
      * @return void
      */
 
-    /*
-        id	                int(11)	        NO	PRI		auto_increment
+    /*                                      NULL KEY    DEFAULT EXTRA
+        id	                int(11)	        NO	PRI		        auto_increment
         url	                char(255)	    NO
         titulo	            char(255)	    YES
         descripcion	        text	        YES
-        status	            tinyint(1)	    NO		0
-        fecha_publicacion	datetime	    NO			
+        status	            tinyint(1)	    NO		    0
+        fecha_publicacion	datetime	    NO
         created_at	        datetime	    YES
         updated_at	        datetime	    YES
         imagen	            varchar(255)	YES
@@ -29,10 +29,12 @@ class CreateNewsTable extends Migration
 
     public function up()
     {
-        Schema::create('noticia', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('noticia')) {
+            Schema::create('noticia', function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
