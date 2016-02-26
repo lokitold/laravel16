@@ -32,6 +32,15 @@ class CreateNewsTable extends Migration
         if (!Schema::hasTable('noticia')) {
             Schema::create('noticia', function (Blueprint $table) {
                 $table->increments('id');
+                $table->string('url');
+                $table->string('titulo')->nullable();;
+                $table->text('descripcion')->nullable();;
+                $table->tinyInteger('status')->default(0);
+                $table->dateTime('fecha_publicacion');
+                $table->string('imagen')->nullable();
+                $table->integer('source_id')->nullable();
+                $table->decimal('longitud', 12, 8)->nullable();
+                $table->decimal('latitud', 12, 8)->nullable();
                 $table->timestamps();
             });
         }
