@@ -188,7 +188,15 @@ Entre las primeras diligencias realizadas, según precisó, se ha tomado las dec
     }
 
     public function testLocation(){
-        $locations = \App\Location::all();
-        dd($locations);
+        /*$locations = \App\Location::all();
+
+        foreach ($locations as $location):
+            dd($location->noticia);
+        endforeach;*/
+
+        $noticia = \App\Noticia::find(2);
+
+        dd($noticia->locations);
+
     }
 }

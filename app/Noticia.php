@@ -29,6 +29,14 @@ class Noticia extends Model
      */
     //protected $hidden = ['password', 'remember_token'];
 
+    #relations
+
+    public function locations()
+    {
+        return $this->hasMany('App\Location');
+    }
+
+    #scopes
     public function scopeStatus($query,$status){
 
         if(trim($status) != ''):
@@ -53,6 +61,5 @@ class Noticia extends Model
 
         $query->whereBetween('fecha_publicacion', [$desde, $hasta])->get();
     }
-
      
 }
