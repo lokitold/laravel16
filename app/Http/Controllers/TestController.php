@@ -186,4 +186,9 @@ Entre las primeras diligencias realizadas, según precisó, se ha tomado las dec
         fclose($fd);
         return $response;
     }
+
+    public function testLocation(){
+        $locations = \App\Location::all();
+        dd($locations);
+    }
 }
