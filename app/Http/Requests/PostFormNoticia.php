@@ -23,8 +23,8 @@ class PostFormNoticia extends Request {
     public function rules()
     {
         return [
-            //"title"    =>    "required|min:5|max:45",
-            //"body"		 =>		 "required|min:5|max:500"
+            "longitud"    =>    "numeric",
+            "latitud"		 =>		 "numeric"
         ];
     }
 
