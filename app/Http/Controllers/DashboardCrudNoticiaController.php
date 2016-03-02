@@ -52,6 +52,15 @@ class DashboardCrudNoticiaController extends Controller
 
         $noticia->status = \Request::input('status');
 
+
+        /*$location = new  \App\Location();
+        $location->longitud = \Request::input('longitud');
+        $location->latitud = \Request::input('latitud');
+
+        dd($location);
+
+        $noticia->locations()->save($location);
+*/
         $noticia->save();
 
         if(\Request::input('location')== 'home'):
