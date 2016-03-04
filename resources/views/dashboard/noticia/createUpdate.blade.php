@@ -61,12 +61,14 @@
                     </div>
 
                     <!-- test varios locaciones por noticias -->
+                    <div class="panel-body">
                     @foreach($noticia->locations as $location)
                         <div class="form-group">
-                        {!! Form::text('location['.$location->id.'][longitud]',$location->longitud) !!}
-                        {!! Form::text('location['.$location->id.'][latitud]',$location->latitud) !!}
+                        {!! Form::text('location['.$location->id.'][longitud]',$location->longitud, ["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                        {!! Form::text('location['.$location->id.'][latitud]',$location->latitud,["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
                         </div>
                     @endforeach
+                    </div>
                     <!-- FIN test varios locaciones por noticias-->
 
 
