@@ -125,28 +125,35 @@
 
         function initAutocomplete() {
             var latLng = {
-                        lat: <?php echo $noticia->latitud ? $noticia->latitud : '-12.0461738' ?>,
-                        lng: <?php echo $noticia->longitud ? $noticia->longitud : '-77.0299262' ?>
+                lat: <?php echo $noticia->latitud ? $noticia->latitud : '-12.0461738' ?>,
+                lng: <?php echo $noticia->longitud ? $noticia->longitud : '-77.0299262' ?>
 
-                    },
-                    map = new google.maps.Map(document.getElementById('map'), {
-                        center: latLng,
-                        zoom: 12,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    }),
-                    marker = new google.maps.Marker({
-                        position: latLng,
-                        draggable: true,
-                        map: map,
-                        title: 'Arrastrar para ubicar posición'
-                    }),
-                    setData = function () {
-                        document.getElementById('input-longitud').value = marker.position.lng();
-                        document.getElementById('input-latitud').value = marker.position.lat();
-                        $('select[name=\'status\'] > option[value="1"]').attr('selected', 'selected')
-                    },
-                    input = document.getElementById('pac-input'),
-                    searchBox = new google.maps.places.SearchBox(input);
+
+
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: latLng,
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            var marker = new google.maps.Marker({
+                position: latLng,
+                draggable: true,
+                map: map,
+                title: 'Arrastrar para ubicar posición'
+            });
+
+            var setData = function () {
+                document.getElementById('input-longitud').value = marker.position.lng();
+                document.getElementById('input-latitud').value = marker.position.lat();
+                $('select[name=\'status\'] > option[value="1"]').attr('selected', 'selected')
+            };
+
+            var input = document.getElementById('pac-input');
+
+            var searchBox = new google.maps.places.SearchBox(input);
 
             map.addListener('click', function (e) {
                 marker.setPosition(e.latLng);
