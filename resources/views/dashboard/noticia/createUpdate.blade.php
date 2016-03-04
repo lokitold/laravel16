@@ -63,22 +63,33 @@
                     <!-- test varios locaciones por noticias -->
                     <div class="panel panel-default">
                         <div class="panel-body">
-                        @foreach($noticia->locations as $location)
-                            <div class="col-md-3 ">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="form-group">
-                                            {!! Form::label('longitudlabel', 'Longitud') !!}
-                                            {!! Form::text('location['.$location->id.'][longitud]',$location->longitud, ["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::label('latitudlabel', 'Latitud') !!}
-                                            {!! Form::text('location['.$location->id.'][latitud]',$location->latitud,["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                            <div class="row">
+                                @foreach($noticia->locations as $location)
+                                    <div class="col-md-3 ">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                {!! Form::checkbox('locations-delete['.$location->id.']', $location->id) !!}
+                                                <div class="form-group">
+                                                    {!! Form::label('longitudlabel', 'Longitud') !!}
+                                                    {!! Form::text('location['.$location->id.'][longitud]',$location->longitud, ["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                                                </div>
+                                                <div class="form-group">
+                                                    {!! Form::label('latitudlabel', 'Latitud') !!}
+                                                    {!! Form::text('location['.$location->id.'][latitud]',$location->latitud,["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        {!! Form::submit('Delete locations', ["class" => "btn btn-danger ","name" => "delelete-locations"]) !!}
+                                    </div>
+                                </div>
+                                <!-- /.col-lg-12 -->
+                            </div>
                         </div>
                     </div>
                     <!-- FIN test varios locaciones por noticias-->
