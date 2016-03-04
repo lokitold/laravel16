@@ -44,16 +44,23 @@ class DashboardCrudNoticiaController extends Controller
 
     public function update($id, PostFormNoticia $postForm)
     {
-        //$input = \Request::all();
+        $input = \Request::all();
+        //dd($input);
+
+        #delete locations notice
+        if(!empty(\Request::input('delelete-locations'))):
+            foreach(\Request::input('locations-delete') as $idLocation):
+                $locationDelete = \App\Location::find($idLocation);
+                $locationDelete->delete();
+            endforeach;
+            return redirect()->route('dashboard.noticia.edit', ['noticia' => $id])->with('message', 'Post updated');
+        endif;
 
         #notice save
         $noticia = \App\Noticia::find($id);
         $noticia->longitud = \Request::input('longitud');
         $noticia->latitud = \Request::input('latitud');
         $noticia->status = \Request::input('status');
-
-        #delete locations notice previous
-        #$locations = \App\Location::where('noticia_id', $id)->forceDelete();
 
         #new locations notice
         $location = new  \App\Location();
