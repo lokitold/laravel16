@@ -7,7 +7,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-11">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <p class="text-right"><a target='_blank' href="{!! $noticia->url !!}}">Acceder a Noticia</a></p>
@@ -61,19 +61,25 @@
                     </div>
 
                     <!-- test varios locaciones por noticias -->
-                    <div class="panel-body">
-                    @foreach($noticia->locations as $location)
-                        <div class="col-md-3 ">
-                            <div class="form-group">
-                                {!! Form::label('longitudlabel', 'Longitud') !!}
-                                {!! Form::text('location['.$location->id.'][longitud]',$location->longitud, ["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        @foreach($noticia->locations as $location)
+                            <div class="col-md-3 ">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            {!! Form::label('longitudlabel', 'Longitud') !!}
+                                            {!! Form::text('location['.$location->id.'][longitud]',$location->longitud, ["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('latitudlabel', 'Latitud') !!}
+                                            {!! Form::text('location['.$location->id.'][latitud]',$location->latitud,["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                {!! Form::label('latitudlabel', 'Latitud') !!}
-                                {!! Form::text('location['.$location->id.'][latitud]',$location->latitud,["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
-                            </div>
+                        @endforeach
                         </div>
-                    @endforeach
                     </div>
                     <!-- FIN test varios locaciones por noticias-->
 
