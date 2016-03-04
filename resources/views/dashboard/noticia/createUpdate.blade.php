@@ -64,8 +64,12 @@
                     <div class="panel-body">
                     @foreach($noticia->locations as $location)
                         <div class="form-group">
-                        {!! Form::text('location['.$location->id.'][longitud]',$location->longitud, ["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
-                        {!! Form::text('location['.$location->id.'][latitud]',$location->latitud,["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                            {!! Form::label('longitudlabel', 'Longitud') !!}
+                            {!! Form::text('location['.$location->id.'][longitud]',$location->longitud, ["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('latitudlabel', 'Latitud') !!}
+                            {!! Form::text('location['.$location->id.'][latitud]',$location->latitud,["class" => "form-control" , 'type' => "number",'step'=>"any"]) !!}
                         </div>
                     @endforeach
                     </div>
