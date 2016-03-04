@@ -61,9 +61,12 @@
                     </div>
 
                     <!-- test varios locaciones por noticias -->
-                    <?php /* foreach ($product_relateds as $product_related) { ?>
-                        <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>">
-                    <?php }  */ ?>
+                    @foreach($noticia->locations as $location)
+                        <div class="form-group">
+                        {!! Form::text('location['.$location->id.'][longitud]',$location->longitud) !!}
+                        {!! Form::text('location['.$location->id.'][latitud]',$location->latitud) !!}
+                        </div>
+                    @endforeach
                     <!-- FIN test varios locaciones por noticias-->
 
 
