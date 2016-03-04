@@ -60,6 +60,12 @@
                         {!! Form::Number('latitud', null, ["class" => "form-control" , 'type' => "number",'step'=>"any",'id' => 'input-latitud']) !!}
                     </div>
 
+                    <!-- test varios locaciones por noticias -->
+                    <?php /* foreach ($product_relateds as $product_related) { ?>
+                        <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>">
+                    <?php }  */ ?>
+                    <!-- FIN test varios locaciones por noticias-->
+
 
                     <div class="panel-body ">
                         <input id="pac-input" class="form-control" type="text" placeholder="Buscar...">

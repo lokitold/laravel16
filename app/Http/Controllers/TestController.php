@@ -199,4 +199,18 @@ Entre las primeras diligencias realizadas, según precisó, se ha tomado las dec
         dd($noticia->locations);
 
     }
+
+    /*private function UserToken($token,$expire,$user_id){
+
+        if($JetUserPass=JetUserPass::find($user_id)->token){
+            $JetT = new JetTokens(['id_token' =>$token,'expires_on'=>$expire]);
+            $JetUserPass2=JetUserPass::find($user_id);
+            $JetUserPass2->token()->save($JetT);//NOT WORKING
+
+        }else{
+            $JetT = new JetTokens(['id_token' =>$token,'expires_on'=>$expire]);
+            $JetUserPass=JetUserPass::find($user_id);
+            $JetUserPass->token()->save($JetT);
+        }
+    }*/
 }
