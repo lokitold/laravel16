@@ -61,7 +61,7 @@
                     </div>
 
                     <!-- test varios locaciones por noticias -->
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" style="border-color : #A9A6A6">
                         <div class="panel-body">
                             <div class="row">
                                 @foreach($noticia->locations as $location)
