@@ -127,9 +127,6 @@
             var latLng = {
                 lat: <?php echo $noticia->latitud ? $noticia->latitud : '-12.0461738' ?>,
                 lng: <?php echo $noticia->longitud ? $noticia->longitud : '-77.0299262' ?>
-
-
-
             };
 
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -159,7 +156,9 @@
                 marker.setPosition(e.latLng);
                 setData();
             });
+
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
             marker.addListener('dragend', function () {
                 setData();
             });
