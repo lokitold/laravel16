@@ -18,6 +18,7 @@ Route::get('/test', ['as' =>'test', 'uses' => 'HomeController@test']);
 //Route test
 Route::get('/testapi', ['as' =>'testapi', 'uses' => 'TestController@test']);
 Route::get('/test-locations', ['as' =>'testlocations', 'uses' => 'TestController@testLocation']);
+Route::get('/test/googlemaps', ['as' =>'testgooglemaps', 'uses' => 'Test\TestController@test']);
 
 // Dashboard
 Route::group(['middleware' => 'auth'], function () {
