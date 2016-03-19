@@ -87,7 +87,18 @@ class DashboardCrudNoticiaController extends Controller
     public function edit($id)
     {
 
-        $this->data['noticia'] = \App\Noticia::find($id);
+        $noticia = \App\Noticia::find($id);
+        $this->data['noticia'] = $noticia;
+
+        # marcadores location notice
+        $marcadores = array();
+        foreach($noticia->locations as $location):
+            $marcadores[]= array(
+                'latitud' => $location->latitud,
+                'longitud' => $location->longitud
+            );
+        endforeach;
+        $this->data['marcadoresJson'] = json_encode($marcadores);
 
         return view('dashboard.noticia.createUpdate',$this->data);
     }
