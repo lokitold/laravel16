@@ -23,7 +23,7 @@ class TestController extends Controller
     }
 
     public function jade(){
-        $this->data['uri'] = 'hola';
+        $this->data['uri'] = 'holas';
         return view('test.test',$this->data);
     }
 }
