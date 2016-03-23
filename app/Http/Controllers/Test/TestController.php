@@ -18,12 +18,17 @@ class TestController extends Controller
     # Clave del api  = AIzaSyDI1G5t3_HL8rXgGiK8HrpLu5yRWyTqPSo
     # Administrador de api de google => https://console.developers.google.com
 
-    public function test(){
+    public function test()
+    {
         echo "aca";
     }
 
-    public function jade(){
+    public function jade()
+    {
         $this->data['saludos'] = 'hola mundommfd';
-        return view('test.test',$this->data);
+        $this->data['title'] = 'Jade is awesome!';
+        $this->data['content'] = 'Oh yeah, it is.';
+
+        return view('test.test', $this->data);
     }
 }
