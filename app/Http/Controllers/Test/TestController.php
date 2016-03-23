@@ -21,4 +21,9 @@ class TestController extends Controller
     public function test(){
         echo "aca";
     }
+
+    public function jade(){
+        $this->data['uri'] = 'hola';
+        return view('test.test',$this->data);
+    }
 }
