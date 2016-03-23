@@ -11,7 +11,8 @@
         "nesbot/carbon": "~1.14",
         "uwdoem/csrf": ">=0.1",
         "maer/csrf": "0.*",
-        "lokitold/helper": "1.0"
+        "lokitold/helper": "1.0",
+        "talesoft/tale-jade-laravel": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
