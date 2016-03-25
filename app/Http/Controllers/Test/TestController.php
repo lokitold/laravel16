@@ -17,6 +17,8 @@ class TestController extends Controller
     # Api => http://maps.googleapis.com/maps/api/geocode/output?parameters
     # Clave del api  = AIzaSyDI1G5t3_HL8rXgGiK8HrpLu5yRWyTqPSo
     # Administrador de api de google => https://console.developers.google.com
+    # example =
+    #   https://maps.googleapis.com/maps/api/geocode/json?address=Ayacucho&key=AIzaSyDI1G5t3_HL8rXgGiK8HrpLu5yRWyTqPSo
 
     public function test(){
         echo "aca";
