@@ -145,6 +145,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //mhochm\LaravelJadePhp\LaravelJadePhpServiceProvider::class,
+        Tale\Jade\Bridge\Laravel\ServiceProvider::class,
 
     ],
 

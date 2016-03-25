@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a2fff14f498d1fb4c3118ad0c356e389",
-    "content-hash": "5d83ff18690e037b8734c67d8db146d3",
+    "hash": "19c086c050f9a8ca88a8efea9af0003d",
+    "content-hash": "c8d7b6447fc238ba773110e658127e67",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1954,6 +1954,213 @@
             "time": "2015-11-18 13:41:01"
         },
         {
+            "name": "talesoft/tale-config",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Talesoft/tale-config.git",
+                "reference": "169eeaed57461a63839455b72853c382b09ae859"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Talesoft/tale-config/zipball/169eeaed57461a63839455b72853c382b09ae859",
+                "reference": "169eeaed57461a63839455b72853c382b09ae859",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "talesoft/tale-factory": "~0.1"
+            },
+            "suggest": {
+                "symfony/yaml": "for YAML-configuration",
+                "talesoft/tale-dom": "for XML-configuration"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tale\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Torben Koehn",
+                    "email": "tk@talesoft.io"
+                },
+                {
+                    "name": "Talesoft",
+                    "email": "info@talesoft.io",
+                    "homepage": "http://talesoft.io"
+                }
+            ],
+            "description": "Lightweight configuration interfaces and utilities",
+            "homepage": "http://docs.talesoft.io/tale-framework/tale/config",
+            "keywords": [
+                "config",
+                "options"
+            ],
+            "time": "2016-02-29 22:39:53"
+        },
+        {
+            "name": "talesoft/tale-factory",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Talesoft/tale-factory.git",
+                "reference": "2ff9f746d1636048b9c0cc7c9c24d17c82c3a7ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Talesoft/tale-factory/zipball/2ff9f746d1636048b9c0cc7c9c24d17c82c3a7ac",
+                "reference": "2ff9f746d1636048b9c0cc7c9c24d17c82c3a7ac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tale\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Torben Koehn",
+                    "email": "tk@talesoft.io"
+                },
+                {
+                    "name": "Talesoft",
+                    "email": "info@talesoft.io",
+                    "homepage": "http://talesoft.io"
+                }
+            ],
+            "description": "A small and lightweight implementation of the factory pattern",
+            "homepage": "http://docs.talesoft.io/tale-framework/tale/factory",
+            "keywords": [
+                "factory"
+            ],
+            "time": "2016-03-01 19:06:00"
+        },
+        {
+            "name": "talesoft/tale-jade",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Talesoft/tale-jade.git",
+                "reference": "5afcbc2fbfd4828636ed14beee935004e21ff598"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Talesoft/tale-jade/zipball/5afcbc2fbfd4828636ed14beee935004e21ff598",
+                "reference": "5afcbc2fbfd4828636ed14beee935004e21ff598",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "talesoft/tale-config": "0.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "coffeescript/coffeescript": "Enables CoffeeScript filtering",
+                "erusev/parsedown": "Enables Markdown filtering",
+                "leafo/lessphp": "Enables LESS filtering",
+                "leafo/scssphp": "Enables SASS filtering",
+                "neemzy/stylus": "Enables Stylus filtering"
+            },
+            "bin": [
+                "tale-jade"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tale\\Jade\\": ""
+                },
+                "files": [
+                    "functions.php",
+                    "Compiler/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Torben Koehn",
+                    "email": "tk@talesoft.io"
+                },
+                {
+                    "name": "Talesoft",
+                    "email": "info@talesoft.io",
+                    "homepage": "http://talesoft.io"
+                }
+            ],
+            "description": "A complete and fully-functional implementation of the Jade template language for PHP",
+            "homepage": "http://jade.talesoft.io",
+            "keywords": [
+                "dialect",
+                "html",
+                "jade",
+                "php",
+                "phtml",
+                "presentation",
+                "template",
+                "views"
+            ],
+            "time": "2016-03-04 16:23:20"
+        },
+        {
+            "name": "talesoft/tale-jade-laravel",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Talesoft/tale-jade-laravel.git",
+                "reference": "bcb80438655d17750085b89ec8ceead37b6ad6dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Talesoft/tale-jade-laravel/zipball/bcb80438655d17750085b89ec8ceead37b6ad6dc",
+                "reference": "bcb80438655d17750085b89ec8ceead37b6ad6dc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.0",
+                "illuminate/view": ">=5.0",
+                "talesoft/tale-jade": ">=1.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tale\\Jade\\Bridge\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Torben Koehn",
+                    "email": "tk@talesoft.io"
+                }
+            ],
+            "description": "A bridge to enable use of the Tale Jade template engine with Laravel",
+            "time": "2015-11-10 16:56:04"
+        },
+        {
             "name": "uwdoem/csrf",
             "version": "0.1.1",
             "source": {
@@ -3215,7 +3422,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/177a015cb0e19ff4a49e0e2e2c5fc1c1bee07002",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/4113f97104ffdcb734e15c27fbe27a7e1a3ac3b0",
                 "reference": "177a015cb0e19ff4a49e0e2e2c5fc1c1bee07002",
                 "shasum": ""
             },

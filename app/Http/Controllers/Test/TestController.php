@@ -20,7 +20,17 @@ class TestController extends Controller
     # example =
     #   https://maps.googleapis.com/maps/api/geocode/json?address=Ayacucho&key=AIzaSyDI1G5t3_HL8rXgGiK8HrpLu5yRWyTqPSo
 
-    public function test(){
+    public function test()
+    {
         echo "aca";
+    }
+
+    public function jade()
+    {
+        $this->data['saludos'] = 'hola mundommfd';
+        $this->data['title'] = 'Jade is awesome!';
+        $this->data['content'] = 'Oh yeah, it is.';
+
+        return view('test.test', $this->data);
     }
 }
