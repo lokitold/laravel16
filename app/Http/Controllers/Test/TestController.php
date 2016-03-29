@@ -28,6 +28,9 @@ class TestController extends Controller
         $this->data['saludos'] = 'hola mundommfd';
         $this->data['title'] = 'Jade is awesome!';
         $this->data['content'] = 'Oh yeah, it is.';
+        $this->data['youAreUsingJade'] = TRUE;
+        $this->data['list'] = ["Uno", "Dos", "Tres","Cuatro", "Cinco", "Seis"];
+
 
         return view('test.test', $this->data);
     }
