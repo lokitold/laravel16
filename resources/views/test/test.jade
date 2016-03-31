@@ -1,21 +1,36 @@
-doctype html
-html(lang="en")
+<!DOCTYPE html>
+html(lang="es")
     head
-        title= $title
-        script(type='text/javascript').
-            if (foo) {
-                bar(1 + 5)
-            }
-    body
-        h1 Jade - node template engine
-        #container.col
-            if $youAreUsingJade
-                p You are amazing
-            else
-                p Get on it!
-            p.
-                Jade is a terse and simple
-                templating language with a
-                strong focus on performance
-                and powerful features.
-            input(type='checkbox', checked=true)
+        meta(charset="utf-8")
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title Zapatillas
+        link(rel="stylesheet", href="css/styles.css")
+        link(rel="shortcut icon", href="img/favicon.png")
+    body.jeans.form-jeans
+        // REDES SOCIALES
+        - var home = true
+        - var backjeans = true
+        include test/modules/social-header
+        main#wrapper
+            // HEADER
+            header.site-header
+                a.site-logo(href="")
+                    img(src="img/logo_oechsle_jeans.png", alt="")
+            .box-discount
+                .banner-discount.confirm
+                    .ads-h
+                        img.img-d(src="img/banner-cupon/banner-jeans-flujo-hombre.png", alt="")
+                        img.img-m(src="img/banner-cupon/banner-jeans-flujo-hombre-m.png", alt="")
+                .box-confirm
+                    p.confirm-congrats
+                        | Felicitaciones Walter Venegas
+                    p.confirm-message
+                        | Tus datos han sido enviados correctamente.
+                        br
+                        | En unos minutos estará llegando a tu buzón, un correo electrónico para que disfrutes de tu descuento en nuestras tiendas.
+                    p.confirm-link
+                        a(href="") Quiero seguir mirando más productos del catálogo
+            // FOOTER
+            include modules/footer
+        // JS
+        script#js-core(src='http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/script/jquery.min.js?v1.0.1.6', data-ui='orbit')

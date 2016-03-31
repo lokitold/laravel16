@@ -1,0 +1,34 @@
+
+footer.site-footer
+  .box-content
+    ul.footer-menu
+      li.footer-menu-item.item-logo
+        a.ec-logo(href="")
+          img(src="img/logo_ec.png", alt="elcomercio.pe")
+      li.footer-menu-item.item-terms
+        a.footer-menu-link(href="") Términos y condiciones
+      li.footer-menu-item.item-subscribe
+        script.
+          function validarNews(form){
+            var re = eval("/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/");
+            var ok = !!form.email.value.match(re);
+            form.classList.remove('ui-error');
+            if (!ok) {
+              if (!form.classList.contains('ui-error'))
+                form.classList.add('ui-error')
+            }
+            return ok;
+          }
+        form.frm-subscribe(action="", onsubmit="return validarNews(this);")
+          label.lbl-title Suscríbete
+          input.txt-email(type="text", name="email", placeholder="Suscríbete al news")
+          button.btn-subscribe(type="submit")
+            i.icon-email
+
+    // DELETE COPYRIGHT
+      p.copyright
+        | Catálogo. © 2016. Todos los derechos reservados.
+
+script(src='http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/script/jquery.min.js?v1.0.1.6')
+script(src='js/core.js')
+script(src='js/lib/jquery.zoom.min.js')
