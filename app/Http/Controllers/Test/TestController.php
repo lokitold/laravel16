@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
+use App\Http\Libraries\Jadeview as Jade;
 
 class TestController extends Controller
 {
@@ -34,6 +35,41 @@ class TestController extends Controller
         $this->data['list'] = ["Uno", "Dos", "Tres","Cuatro", "Cinco", "Seis"];
 
 
-        return view('test.test', $this->data);
+        $tiempo_inicio = microtime(true);
+
+        $view = view('test.test', $this->data);
+
+
+        $tiempo_fin = microtime(true);
+
+        $tiempo = $tiempo_fin - $tiempo_inicio;
+
+        echo "<br><br>Tiempo empleado: " . ($tiempo_fin - $tiempo_inicio);
+
+        return $view;
     }
+
+    public function jadeEngine()
+    {
+        $data = [
+            "hello" => "You are welcome.",
+            "welcome"=>true,
+            "list"=>["item1,item2,item3"],
+            "escapetxt"=>"<b>bold tags</b>",
+            "title" => "Jade is awesome!",
+            "youAreUsingJade" => TRUE,
+        ];
+
+
+        $tiempo_inicio = microtime(true);
+
+        echo Jade::render("test/test2",$data);
+
+        $tiempo_fin = microtime(true);
+
+        $tiempo = $tiempo_fin - $tiempo_inicio;
+
+        echo "<br><br>Tiempo empleado: " . ($tiempo_fin - $tiempo_inicio);
+    }
+
 }

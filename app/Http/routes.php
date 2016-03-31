@@ -20,6 +20,7 @@ Route::get('/testapi', ['as' =>'testapi', 'uses' => 'TestController@test']);
 Route::get('/test-locations', ['as' =>'testlocations', 'uses' => 'TestController@testLocation']);
 Route::get('/test/googlemaps', ['as' =>'testgooglemaps', 'uses' => 'Test\TestController@test']);
 Route::get('/jade-render', ['as' =>'jaderender', 'uses' => 'Test\TestController@jade']);
+Route::get('/jade-render2', ['as' =>'jaderender', 'uses' => 'Test\TestController@jadeEngine']);
 Route::get('/test-config', function() {
     dd($this->app->config);
 });

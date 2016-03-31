@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
     head
-        title= $pageTitle
+        title= pageTitle
         script(type='text/javascript').
             if (foo) {
                 bar(1 + 5)
@@ -9,7 +9,7 @@ html(lang="en")
     body
         h1 Jade - node template engine
         #container.col
-            if $youAreUsingJade
+            if youAreUsingJade
                 p You are amazing
             else
                 p Get on it!

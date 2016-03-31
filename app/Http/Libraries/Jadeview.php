@@ -1,13 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Http\Libraries;
 
-class JadeView
+class Jadeview
 {
     public static function render($jadefile, $params=[])
     {
-        $jade_bin = "/usr/bin/jade"; // if you don't know what it is type `which jade` in your terminal
-        $jade_tpl_path = app_path() . '/jade/'; //enter your template path here,defaulted for laravel at app/jade/
+
+
+        $jade_bin = "/usr/local/bin/jade"; // if you don't know what it is type `which jade` in your terminal
+        $jade_tpl_path = '/var/www/laravel/laravel16/resources/views/'; //enter your template path here,defaulted for laravel at app/jade/
         $jadefile = rtrim($jadefile,".jade"); // work for people who use ".jade" extension
 
         /*just in case people do something funky and break the code*/
