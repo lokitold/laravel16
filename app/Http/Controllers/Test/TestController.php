@@ -30,6 +30,7 @@ class TestController extends Controller
         $this->data['saludos'] = 'hola mundommfd';
         $this->data['title'] = 'Jade is awesome!';
         $this->data['content'] = 'Oh yeah, it is.';
+        $this->data['items'] = ['sdsd','asdasd','dadas'];
 
         return view('test.test', $this->data);
     }
