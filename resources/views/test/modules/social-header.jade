@@ -1,0 +1,48 @@
+header.social-header
+  .box-content
+    .site-nav
+      if (home)
+        a.go-home(href="")
+          i.icon-home2
+      if (logojeans)
+        .site-logo
+          a(href="")
+            img(src="img/logo_oechsle_jeans_min.png", alt="")
+      if (logozapatillas)
+        .site-logo
+          a(href="")
+            img(src="img/logo_oechsle_zapatillas_min.png", alt="")
+      if (backjeans)
+        a.go-back(href="")
+          i.icon-back
+          | regresar a
+          span Jeans
+      if (backzapatillas)
+        a.go-back(href="")
+          i.icon-back
+          | regresar a
+          span Zapatillas
+      if (btnjeans)
+        a.go-back(href="")
+          | ver
+          span Jeans
+      if (btnzapatillas)
+        a.go-back(href="")
+          | ver
+          span Zapatillas
+
+    .site-social
+      ul.social-list
+        li.social-item.social-title
+          | Síguenos:
+        li.social-item
+          a.social-link.link-fb(href="")
+            i.icon-fb
+        li.social-item
+          a.social-link.link-yt(href="")
+            i.icon-yt
+        li.social-item
+          a.social-link.link-ins(href="")
+            i.icon-ins
+
+    .clear
