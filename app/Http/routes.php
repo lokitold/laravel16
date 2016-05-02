@@ -24,6 +24,9 @@ Route::get('/jade-render2', ['as' =>'jaderender', 'uses' => 'Test\TestController
 Route::get('/test-config', function() {
     dd($this->app->config);
 });
+Route::get('/flash-message', ['as' =>'flash-message', 'uses' => 'Test\TestController@createFlash']);
+Route::get('/receiver-flash', ['as' =>'receiver-flash', 'uses' => 'Test\TestController@receiverFlash']);
+
 
 // Dashboard
 Route::group(['middleware' => 'auth'], function () {

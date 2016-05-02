@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
 use App\Http\Libraries\Jadeview as Jade;
+use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
@@ -69,6 +70,26 @@ class TestController extends Controller
         $tiempo = $tiempo_fin - $tiempo_inicio;
 
         echo "<br><br>Tiempo empleado: " . ($tiempo_fin - $tiempo_inicio);
+    }
+
+    public function createFlash(){
+        \Session::flash('flash-message','dgfdg'); //<--FLASH MESSAGE
+        return redirect('receiver-flash');
+    }
+
+    public function receiverFlash(Request $request){
+
+        $data = $request->session()->all();
+        //debug_zval_dump($data);
+
+
+        $request->session()->has('flash-message');
+        if($request->session()->has('flash-message')):
+            echo $request->session()->get('flash-message');
+            //$request->session()->forget('flash-message');
+        endif;
+
+        //
     }
 
 }
