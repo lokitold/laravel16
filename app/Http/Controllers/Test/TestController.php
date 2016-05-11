@@ -93,8 +93,8 @@ class TestController extends Controller
         //
     }
 
-    public function queue(Request $request){
-        $message = 'This is a test message that will be queued';
+    public function queue(Request $request,$message){
+        //$message = 'This is a test message that will be queued';
         //$job = (new \App\Jobs\SendSMSMessages($message))->delay(60);
         //$this->dispatch($job);
 
