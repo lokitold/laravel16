@@ -17,6 +17,8 @@ class SendSMSMessages extends Job implements SelfHandling, ShouldQueue
      *
      * @return void
      */
+    public $message = '';
+
     public function __construct($message)
     {
         //

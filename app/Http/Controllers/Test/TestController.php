@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Test;
 use App\Http\Controllers\Controller;
 use App\Http\Libraries\Jadeview as Jade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Queue;
 
 class TestController extends Controller
 {
@@ -94,8 +95,10 @@ class TestController extends Controller
 
     public function queue(Request $request){
         $message = 'This is a test message that will be queued';
-        $job = (new \App\Jobs\SendSMSMessages($message))->delay(60);
-        $this->dispatch($job);
+        //$job = (new \App\Jobs\SendSMSMessages($message))->delay(60);
+        //$this->dispatch($job);
+
+        Queue::push(new \App\Jobs\SendSMSMessages($message));
     }
 
 }
