@@ -92,4 +92,8 @@ class TestController extends Controller
         //
     }
 
+    public function queue(Request $request){
+        dump("aca");
+    }
+
 }

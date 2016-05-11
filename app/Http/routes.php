@@ -26,6 +26,7 @@ Route::get('/test-config', function() {
 });
 Route::get('/flash-message', ['as' =>'flash-message', 'uses' => 'Test\TestController@createFlash']);
 Route::get('/receiver-flash', ['as' =>'receiver-flash', 'uses' => 'Test\TestController@receiverFlash']);
+Route::get('/queue', ['as' =>'queue', 'uses' => 'Test\TestController@queue']);
 
 
 // Dashboard
