@@ -17,9 +17,10 @@ class SendSMSMessages extends Job implements SelfHandling, ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($message)
     {
         //
+        $this->message = $message;
     }
 
     /**
@@ -29,6 +30,6 @@ class SendSMSMessages extends Job implements SelfHandling, ShouldQueue
      */
     public function handle()
     {
-        //
+        dump($this->message);
     }
 }
