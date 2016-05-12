@@ -78,8 +78,16 @@ class HomeController extends Controller
     }
 
     public function test(){
-        $var = new Utils();
-        echo $var->test();
+        //$var = new Utils();
+        //echo $var->test();
+
+        <?php
+        $arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        $avg = array_sum($arr) / count($arr);
+        $callback = function($val) use ($avg){ return $val < $avg; };
+        $return  = array_filter($arr, $callback);
+        dd($return);
+
         //test git reset soft
     }
 }
