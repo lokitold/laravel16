@@ -32,7 +32,7 @@
     </div>
     <div class="row">
         <div class="col-md-5 col-md-offset-4">
-            <h2>Mapa de noticias</h2>
+            <h2>Mapa de noticias XD</h2>
         </div>
     </div>
     <div class="row"></div>
