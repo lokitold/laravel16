@@ -147,6 +147,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         //mhochm\LaravelJadePhp\LaravelJadePhpServiceProvider::class,
         Tale\Jade\Bridge\Laravel\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -198,7 +199,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

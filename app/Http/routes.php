@@ -53,5 +53,7 @@ Route::get('auth/logout', ['as' => 'auth/logout', 'uses' => 'Auth\AuthController
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 
+Route::get('api/image', ['as' => 'api/image', 'uses' => 'Test\ImageController@test']);
+
 
 

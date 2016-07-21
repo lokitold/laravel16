@@ -12,7 +12,10 @@
         "uwdoem/csrf": ">=0.1",
         "maer/csrf": "0.*",
         "lokitold/helper": "1.0",
-        "talesoft/tale-jade-laravel": "*"
+        "talesoft/tale-jade-laravel": "*",
+        "intervention/image": "^2.3",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "guzzlehttp/guzzle": "~5.3|~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
