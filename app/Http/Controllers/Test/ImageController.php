@@ -20,30 +20,31 @@ class ImageController extends Controller
     public function test(Request $request)
     {
 
-        $fontFile = base_path('catalog/view/theme/gec/font/prelo-bold.ttf');
+        $fontFile = base_path('public/assets/fonts/glyphicons-halflings-regular.ttf');
         //echo file_exists($fontFile);
         //dd($fontFile);
 
-        $image = 'http://dev.catalogodigital.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/catalogo_vencido.jpg';
-        $image2 = 'http://dev.catalogodigital.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/icon_vermas.png';
-        //$image = \Storage::disk('s3')->url('catalog/view/theme/gec/client/oechsle/botas/img/catalogo_vencido.jpg');
-        //$image2 = \Storage::disk('s3')->url('catalog/view/theme/gec/client/oechsle/botas/img/icon_vermas.png');
-        //$fonts = \Storage::disk('s3')->url('catalog/view/theme/gec/font/prelo-bold.ttf');
-        //$contents = Storage::disk('local')->get('file.jpg');
+        $image = 'http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/catalogo_vencido.jpg';
 
-        $img = Image::make($image)->insert($image2);
+        $imageLookHombre = 'http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/look_mujer.png';
+        $imageLookMujer = 'http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/look_hombre.png';
 
-        $img->text('foo', 0, 0, function($font) use ($fontFile){
+        $imageHombreEdit = Image::make($imageLookHombre)->resize(100, 100);
+        $imageMujerEdit = Image::make($imageLookMujer)->resize(100, 100);
+
+
+        $img = Image::make($image)
+            ->insert($imageHombreEdit,'left',600,100)
+            ->insert($imageMujerEdit,'left',100,100);
+
+        $img->text('Victor Rojas Centeno', 400,200, function($font) use ($fontFile){
             $font->file($fontFile);
             $font->size(24);
-            $font->color('#fdf6e3');
+            $font->color('#2b2619');
             $font->align('center');
             $font->valign('top');
-            $font->angle(45);
+            //$font->angle(45);
         });
-
-        $img->text('The quick brown fox jumps over the lazy dog.', 120, 100);
-
 
         return $img->response('jpg');
     }
