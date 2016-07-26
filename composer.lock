@@ -2535,12 +2535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Talesoft/tale-factory.git",
-                "reference": "2ff9f746d1636048b9c0cc7c9c24d17c82c3a7ac"
+                "reference": "63335da0e6b435aa481ea2917b017cf482efa043"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Talesoft/tale-factory/zipball/63335da0e6b435aa481ea2917b017cf482efa043",
-                "reference": "2ff9f746d1636048b9c0cc7c9c24d17c82c3a7ac",
+                "reference": "63335da0e6b435aa481ea2917b017cf482efa043",
                 "shasum": ""
             },
             "require": {

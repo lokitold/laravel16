@@ -23,9 +23,15 @@ class ImageController extends Controller
         $fontFile = base_path('public/assets/fonts/glyphicons-halflings-regular.ttf');
         //echo file_exists($fontFile);
         //dd($fontFile);
-
         $image = 'http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/catalogo_vencido.jpg';
+        //$image = \Storage::disk('s3')->url('catalog/view/theme/gec/client/oechsle/botas/img/catalogo_vencido.jpg');
+        //$size = Storage::disk('s3')->size('catalog/view/theme/gec/client/oechsle/botas/img/catalogo_vencido.jpg');
 
+
+        //$bucket  = Storage::disk('s3')->getDriver()->getAdapter()->getBucket();
+        //$storagePath =  Storage::disk('s3')->getDriver()->getAdapter()->getClient()->getObjectUrl($bucket, 'cxfndc');
+        //dd($storagePath);
+        //exit;
         $imageLookHombre = 'http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/look_mujer.png';
         $imageLookMujer = 'http://comprabienprod.s3-website-us-east-1.amazonaws.com/catalog/view/theme/gec/client/oechsle/botas/img/look_hombre.png';
 
