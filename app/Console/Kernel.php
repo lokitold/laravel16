@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\Catalogo::class,
         \App\Console\Commands\Catalogo2::class,
+        \App\Console\Commands\Catalogo3::class,
     ];
 
     /**
