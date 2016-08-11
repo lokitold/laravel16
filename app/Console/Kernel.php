@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\Inspire::class,
+        \App\Console\Commands\Catalogo::class,
+        \App\Console\Commands\Catalogo2::class,
     ];
 
     /**
@@ -24,7 +26,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        //$filePath = '/var/www/laravel/laravel16/storage/logs/catalogo.log';
+
+        //$schedule->command('inspire')
+        //         ->cron('* * * * * *')->sendOutputTo(storage_path('logs/catalogo.log'));
+
+        $schedule->command('catalogo')
+            ->everyFiveMinutes()->sendOutputTo(storage_path('logs/catalogo.log'));
+
+        //$schedule->call(function () {
+        //    dump('hola');
+        //})->everyMinute()->sendOutputTo($filePath);
     }
 }

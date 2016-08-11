@@ -55,5 +55,8 @@ Route::post('auth/register', ['as' => 'auth/register', 'uses' => 'Auth\AuthContr
 
 Route::get('api/image', ['as' => 'api/image', 'uses' => 'Test\ImageController@test']);
 
+Route::get('proc/catalogo', ['as' => 'proc/catalogo', 'uses' => 'Test\ImageController@catalogo']);
+Route::get('proc/catalogoperuid/{start?}/{limit?}', ['as' => 'proc/catalogo', 'uses' => 'Test\ImageController@catalogoperuid']);
+
 
 
