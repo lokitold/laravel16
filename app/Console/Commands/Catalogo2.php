@@ -361,9 +361,9 @@ class Catalogo2 extends Command
             ->where('catalogo','botas-y-chompas')
             ->where('nombres_apellidos',null)
             //->limit($limit)
-            ->skip(500)
+            ->skip(10)
             ->where('status',2)
-            ->take(600)
+            ->take(15)
             ->get();
 
         foreach ($dataLookBD as $dataLook):
